@@ -1,8 +1,8 @@
 package PERS;
 
 /**
- *
- * @author Jean_H_xD
+ * @author Jean_Henrique_Ferreira
+ * Andressa
  */
 public class Conexao {
     
