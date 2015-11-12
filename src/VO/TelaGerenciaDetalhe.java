@@ -86,13 +86,12 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
             btSalvarEditar.setText("Editar");
             txtNomeGerencia.setEnabled(false);
             txtSalarioAdicional.setEnabled(false);
-            GerenciaVO gerenciaVO;
-            gerenciaVO = new GerenciaVO(-1,
-                    this.txtNomeGerencia.getText(),
-                    Double.parseDouble(this.txtSalarioAdicional.getText()));
+            GerenciaVO gerenciaVO = new GerenciaVO(-1, this.txtNomeGerencia.getText(), Double.parseDouble(this.txtSalarioAdicional.getText()));
+            
             GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
             GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
             gerenciaPERS.salvar();
+            
         } else {
             if (btSalvarEditar.getText().equals("Editar")) {
                 btSalvarEditar.setText("Salvar");

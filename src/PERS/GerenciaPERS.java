@@ -22,9 +22,10 @@ public class GerenciaPERS {
     private GerenciaRN gerenciaRN;
 
     public GerenciaPERS(GerenciaRN gerenciaRN) {
+        this.setGerenciaRN(gerenciaRN);
     }
 
-    public void salvar(GerenciaVO gerenciaVO) {
+    public void salvar() {
         int cod = this.getGerenciaRN().getGerenciaVO().getCod();
         String nome = this.getGerenciaRN().getGerenciaVO().getNome();
         double salario = this.getGerenciaRN().getGerenciaVO().getSalario();
@@ -47,8 +48,6 @@ public class GerenciaPERS {
         this.gerenciaRN = gerenciaRN;
     }
 
-    public void salvar() {
 
-    }
 
 }
