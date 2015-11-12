@@ -20,6 +20,8 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
 
     public TelaGerenciaDetalhe() {
         initComponents();
+        this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
+
     }
 
     /**
@@ -39,40 +41,55 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
         txtSalarioAdicional = new javax.swing.JTextField();
         btSalvarEditar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel1.setText("Cod");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 27, -1, 20));
 
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel2.setText("Nome");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 54, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel3.setText("Salári Adicional");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 86, -1, -1));
 
+        lblCodGerencia.setBackground(new java.awt.Color(255, 255, 255));
+        lblCodGerencia.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        lblCodGerencia.setForeground(new java.awt.Color(51, 51, 51));
         lblCodGerencia.setText("CODIGO");
-        getContentPane().add(lblCodGerencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
+        getContentPane().add(lblCodGerencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
+        txtNomeGerencia.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         txtNomeGerencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeGerenciaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNomeGerencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 250, -1));
-        getContentPane().add(txtSalarioAdicional, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 250, -1));
+        getContentPane().add(txtNomeGerencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 250, -1));
 
+        txtSalarioAdicional.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        getContentPane().add(txtSalarioAdicional, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 250, -1));
+
+        btSalvarEditar.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         btSalvarEditar.setText("Quaquer coisa");
         btSalvarEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSalvarEditarActionPerformed(evt);
             }
         });
-        getContentPane().add(btSalvarEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+        getContentPane().add(btSalvarEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
 
+        jButton2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jButton2.setText("Excluir");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_gerenciaDetalhe.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -87,11 +104,11 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
             txtNomeGerencia.setEnabled(false);
             txtSalarioAdicional.setEnabled(false);
             GerenciaVO gerenciaVO = new GerenciaVO(-1, this.txtNomeGerencia.getText(), Double.parseDouble(this.txtSalarioAdicional.getText()));
-            
+
             GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
             GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
             gerenciaPERS.salvar();
-            
+
         } else {
             if (btSalvarEditar.getText().equals("Editar")) {
                 btSalvarEditar.setText("Salvar");
@@ -144,6 +161,7 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblCodGerencia;
     private javax.swing.JTextField txtNomeGerencia;
     private javax.swing.JTextField txtSalarioAdicional;
