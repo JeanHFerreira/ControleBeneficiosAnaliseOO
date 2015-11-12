@@ -10,7 +10,7 @@ import java.sql.SQLException;
  * @author Eric Pinheiro
  */
 public class Conexao {
-   private static String url = "jdbc:postgresql://localhost:5432/NOME_BASE_DE_DADOS"; // alterar depois de criar o db
+   private static String url = "jdbc:postgresql://localhost:5432/controlabeneficio"; //nome do db
         private static String user = "postgres"; //usuario padrao
         private static String senha = "masterkey"; //colcoar a senha que foi definida no db
         
