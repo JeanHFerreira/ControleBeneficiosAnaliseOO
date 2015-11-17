@@ -103,7 +103,9 @@ public class TelaGerencia extends javax.swing.JFrame {
        GerenciaVO gerenciaVO = new GerenciaVO();
        gerenciaVO.setCod(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString()));
        gerenciaVO.setNome(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
-       gerenciaVO.setSalario(Double.parseDouble(tabela.getValueAt(tabela.getSelectedRow(), 2).toString())); 
+       gerenciaVO.setSalario(Double.parseDouble(tabela.getValueAt(tabela.getSelectedRow(), 2).toString()));
+       
+       
         TelaGerenciaDetalhe tela = new TelaGerenciaDetalhe(gerenciaVO);
         tela.setBotaoSalvarEditar("Salvar");
         tela.setVisible(true);

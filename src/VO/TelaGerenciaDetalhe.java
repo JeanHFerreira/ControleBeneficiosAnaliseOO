@@ -158,7 +158,7 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
        GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
        GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
        
-       gerenciaPERS.excluir();
+       gerenciaPERS.excluir()
        
        
     }//GEN-LAST:event_jButton2ActionPerformed
