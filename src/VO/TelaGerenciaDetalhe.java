@@ -24,6 +24,16 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
 
     }
 
+    public TelaGerenciaDetalhe(GerenciaVO gerenciaVO) {
+        initComponents();
+        this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
+        
+        lblCodGerencia.setText(""+gerenciaVO.getCod());
+        txtNomeGerencia.setText(gerenciaVO.getNome());
+        txtSalarioAdicional.setText(""+gerenciaVO.getSalario());
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,7 +71,7 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
         lblCodGerencia.setBackground(new java.awt.Color(255, 255, 255));
         lblCodGerencia.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         lblCodGerencia.setForeground(new java.awt.Color(51, 51, 51));
-        lblCodGerencia.setText("CODIGO");
+        lblCodGerencia.setText("-");
         getContentPane().add(lblCodGerencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
         txtNomeGerencia.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
@@ -73,6 +83,11 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
         getContentPane().add(txtNomeGerencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 250, -1));
 
         txtSalarioAdicional.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        txtSalarioAdicional.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSalarioAdicionalActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtSalarioAdicional, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 250, -1));
 
         btSalvarEditar.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
@@ -86,6 +101,11 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jButton2.setText("Excluir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_gerenciaDetalhe.png"))); // NOI18N
@@ -103,7 +123,14 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
             btSalvarEditar.setText("Editar");
             txtNomeGerencia.setEnabled(false);
             txtSalarioAdicional.setEnabled(false);
-            GerenciaVO gerenciaVO = new GerenciaVO(-1, this.txtNomeGerencia.getText(), Double.parseDouble(this.txtSalarioAdicional.getText()));
+            int codigo;
+            if(lblCodGerencia.getText().equals("-")){
+                codigo = 0;
+            }else{
+                codigo = Integer.parseInt(lblCodGerencia.getText());
+            }
+            
+            GerenciaVO gerenciaVO = new GerenciaVO(codigo, this.txtNomeGerencia.getText(), Double.parseDouble(this.txtSalarioAdicional.getText()));
 
             GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
             GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
@@ -118,6 +145,23 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btSalvarEditarActionPerformed
+
+    private void txtSalarioAdicionalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSalarioAdicionalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSalarioAdicionalActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       GerenciaVO gerenciaVO = new GerenciaVO();
+       gerenciaVO.setCod(Integer.parseInt(lblCodGerencia.getText()));
+       gerenciaVO.setNome(txtNomeGerencia.getText());
+       gerenciaVO.setSalario(Double.parseDouble(txtSalarioAdicional.getText()));
+       GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
+       GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
+       
+       gerenciaPERS.excluir();
+       
+       
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

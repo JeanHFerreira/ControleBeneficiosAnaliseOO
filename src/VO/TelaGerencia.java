@@ -5,7 +5,11 @@
  */
 package VO;
 
+import PERS.GerenciaPERS;
+import RN.GerenciaRN;
+import java.util.ArrayList;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -31,20 +35,20 @@ public class TelaGerencia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        txtBusca = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         btIncluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabela = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerencia");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 6, 370, -1));
+        txtBusca.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        getContentPane().add(txtBusca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 6, 370, -1));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_lupa_buscar.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -72,9 +76,9 @@ public class TelaGerencia extends javax.swing.JFrame {
         });
         getContentPane().add(btIncluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, -1, -1));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setBackground(new java.awt.Color(255, 255, 255));
+        tabela.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"teste", "teste", "teste"}
             },
@@ -82,10 +86,10 @@ public class TelaGerencia extends javax.swing.JFrame {
                 "Código", "Nome", "Salário Adicional"
             }
         ));
-        jTable1.setGridColor(new java.awt.Color(255, 51, 51));
-        jTable1.setSelectionBackground(new java.awt.Color(255, 51, 51));
-        jTable1.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setViewportView(jTable1);
+        tabela.setGridColor(new java.awt.Color(255, 51, 51));
+        tabela.setSelectionBackground(new java.awt.Color(255, 51, 51));
+        tabela.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(tabela);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 460, 170));
 
@@ -96,7 +100,11 @@ public class TelaGerencia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        TelaGerenciaDetalhe tela = new TelaGerenciaDetalhe();
+       GerenciaVO gerenciaVO = new GerenciaVO();
+       gerenciaVO.setCod(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString()));
+       gerenciaVO.setNome(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
+       gerenciaVO.setSalario(Double.parseDouble(tabela.getValueAt(tabela.getSelectedRow(), 2).toString())); 
+        TelaGerenciaDetalhe tela = new TelaGerenciaDetalhe(gerenciaVO);
         tela.setBotaoSalvarEditar("Salvar");
         tela.setVisible(true);
         this.dispose();
@@ -110,7 +118,19 @@ public class TelaGerencia extends javax.swing.JFrame {
     }//GEN-LAST:event_btIncluirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+        modelo.setNumRows(0);
+        GerenciaVO gerenciaVO = new GerenciaVO();
+        GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
+        GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
+        
+           ArrayList<GerenciaVO>lista = gerenciaPERS.carregarTabela(txtBusca.getText());
+           
+        for(int i =0; i<lista.size();i++){
+           
+            modelo.addRow(new Object[]{lista.get(i).getCod(), lista.get(i).getNome(), lista.get(i).getSalario()});
+        }
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -153,7 +173,7 @@ public class TelaGerencia extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tabela;
+    private javax.swing.JTextField txtBusca;
     // End of variables declaration//GEN-END:variables
 }
