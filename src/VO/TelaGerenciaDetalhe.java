@@ -20,6 +20,7 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
 
     public TelaGerenciaDetalhe() {
         initComponents();
+        this.setSize(400, 185);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
 
     }
@@ -54,25 +55,29 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel1.setText("Cod");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 27, -1, 20));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(70, 27, 22, 20);
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel2.setText("Nome");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 54, -1, -1));
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(60, 54, 34, 15);
 
         jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel3.setText("Salári Adicional");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 86, -1, -1));
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(10, 86, 82, 15);
 
         lblCodGerencia.setBackground(new java.awt.Color(255, 255, 255));
         lblCodGerencia.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         lblCodGerencia.setForeground(new java.awt.Color(51, 51, 51));
         lblCodGerencia.setText("-");
-        getContentPane().add(lblCodGerencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
+        getContentPane().add(lblCodGerencia);
+        lblCodGerencia.setBounds(100, 30, 5, 15);
 
         txtNomeGerencia.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         txtNomeGerencia.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +85,8 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
                 txtNomeGerenciaActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNomeGerencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 250, -1));
+        getContentPane().add(txtNomeGerencia);
+        txtNomeGerencia.setBounds(100, 50, 250, 27);
 
         txtSalarioAdicional.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         txtSalarioAdicional.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +94,8 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
                 txtSalarioAdicionalActionPerformed(evt);
             }
         });
-        getContentPane().add(txtSalarioAdicional, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 250, -1));
+        getContentPane().add(txtSalarioAdicional);
+        txtSalarioAdicional.setBounds(100, 80, 250, 27);
 
         btSalvarEditar.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         btSalvarEditar.setText("Quaquer coisa");
@@ -97,7 +104,8 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
                 btSalvarEditarActionPerformed(evt);
             }
         });
-        getContentPane().add(btSalvarEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, -1, -1));
+        getContentPane().add(btSalvarEditar);
+        btSalvarEditar.setBounds(180, 120, 108, 27);
 
         jButton2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jButton2.setText("Excluir");
@@ -106,10 +114,12 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, -1));
+        getContentPane().add(jButton2);
+        jButton2.setBounds(280, 120, 66, 27);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_gerenciaDetalhe.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 402, 184);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -22,7 +22,9 @@ public class TelaGerencia extends javax.swing.JFrame {
      */
     public TelaGerencia() {
         initComponents();
+        this.setSize(486,330);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
+        
 
     }
 
@@ -35,9 +37,9 @@ public class TelaGerencia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton2 = new javax.swing.JButton();
         txtBusca = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         btIncluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
@@ -45,18 +47,7 @@ public class TelaGerencia extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerencia");
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtBusca.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        getContentPane().add(txtBusca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 6, 370, -1));
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_lupa_buscar.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 5, 60, 30));
+        getContentPane().setLayout(null);
 
         jButton2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jButton2.setText("Editar");
@@ -65,7 +56,21 @@ public class TelaGerencia extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, -1, -1));
+        getContentPane().add(jButton2);
+        jButton2.setBounds(330, 240, 62, 27);
+
+        txtBusca.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        getContentPane().add(txtBusca);
+        txtBusca.setBounds(40, 6, 370, 27);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_lupa_buscar.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(410, 5, 60, 30);
 
         btIncluir.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         btIncluir.setText("Incluir");
@@ -74,7 +79,8 @@ public class TelaGerencia extends javax.swing.JFrame {
                 btIncluirActionPerformed(evt);
             }
         });
-        getContentPane().add(btIncluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, -1, -1));
+        getContentPane().add(btIncluir);
+        btIncluir.setBounds(400, 240, 63, 27);
 
         tabela.setBackground(new java.awt.Color(255, 255, 255));
         tabela.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
@@ -91,10 +97,12 @@ public class TelaGerencia extends javax.swing.JFrame {
         tabela.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tabela);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 460, 170));
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(10, 60, 460, 170);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bg_telaBusca.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 486, 302);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
