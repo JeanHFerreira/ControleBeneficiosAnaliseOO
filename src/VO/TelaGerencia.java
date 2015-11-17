@@ -1,31 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package VO;
 
 import PERS.GerenciaPERS;
 import RN.GerenciaRN;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ * @author Jean
+ * @author Andressa
  * @author Eric
  */
 public class TelaGerencia extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaGerencia
-     */
     public TelaGerencia() {
         initComponents();
-        this.setSize(486,330);
+        this.setSize(486, 330);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
-        
-
     }
 
     /**
@@ -37,40 +29,41 @@ public class TelaGerencia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton2 = new javax.swing.JButton();
+        btModificar = new javax.swing.JButton();
         txtBusca = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btMostrarRelacao = new javax.swing.JButton();
         btIncluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        lbImagemFundo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Gerencia");
+        setResizable(false);
         getContentPane().setLayout(null);
 
-        jButton2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        jButton2.setText("Editar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btModificar.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        btModificar.setText("Modificar");
+        btModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(330, 240, 62, 27);
+        getContentPane().add(btModificar);
+        btModificar.setBounds(230, 240, 110, 25);
 
         txtBusca.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         getContentPane().add(txtBusca);
-        txtBusca.setBounds(40, 6, 370, 27);
+        txtBusca.setBounds(40, 6, 370, 22);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_lupa_buscar.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btMostrarRelacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_lupa_buscar.png"))); // NOI18N
+        btMostrarRelacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btMostrarRelacaoActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(410, 5, 60, 30);
+        getContentPane().add(btMostrarRelacao);
+        btMostrarRelacao.setBounds(410, 5, 60, 30);
 
         btIncluir.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         btIncluir.setText("Incluir");
@@ -80,13 +73,12 @@ public class TelaGerencia extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btIncluir);
-        btIncluir.setBounds(400, 240, 63, 27);
+        btIncluir.setBounds(345, 240, 120, 25);
 
-        tabela.setBackground(new java.awt.Color(255, 255, 255));
         tabela.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"teste", "teste", "teste"}
+
             },
             new String [] {
                 "Código", "Nome", "Salário Adicional"
@@ -94,31 +86,36 @@ public class TelaGerencia extends javax.swing.JFrame {
         ));
         tabela.setGridColor(new java.awt.Color(255, 51, 51));
         tabela.setSelectionBackground(new java.awt.Color(255, 51, 51));
-        tabela.setSelectionForeground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tabela);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(10, 60, 460, 170);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bg_telaBusca.png"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 486, 302);
+        lbImagemFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bg_telaBusca.png"))); // NOI18N
+        getContentPane().add(lbImagemFundo);
+        lbImagemFundo.setBounds(0, 0, 486, 302);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       GerenciaVO gerenciaVO = new GerenciaVO();
-       gerenciaVO.setCod(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString()));
-       gerenciaVO.setNome(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
-       gerenciaVO.setSalario(Double.parseDouble(tabela.getValueAt(tabela.getSelectedRow(), 2).toString()));
-       
-       
-        TelaGerenciaDetalhe tela = new TelaGerenciaDetalhe(gerenciaVO);
-        tela.setBotaoSalvarEditar("Salvar");
-        tela.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModificarActionPerformed
+        if (tabela.getSelectedRowCount() == 1) {
+            GerenciaVO gerenciaVO = new GerenciaVO();
+            gerenciaVO.setCod(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString()));
+            gerenciaVO.setNome(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
+            gerenciaVO.setSalario(Double.parseDouble(tabela.getValueAt(tabela.getSelectedRow(), 2).toString()));
+            TelaGerenciaDetalhe tela = new TelaGerenciaDetalhe(gerenciaVO);
+            tela.setBotaoSalvarEditar("Salvar");
+            tela.setVisible(true);
+            this.dispose();
+        } else {
+            if (tabela.getSelectedRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Selecione um item para modificar", null, JOptionPane.ERROR_MESSAGE, null);
+            } else {
+                JOptionPane.showMessageDialog(this, "Selecione somente um item para modificar", null, JOptionPane.ERROR_MESSAGE, null);
+            }
+        }
+    }//GEN-LAST:event_btModificarActionPerformed
 
     private void btIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIncluirActionPerformed
         TelaGerenciaDetalhe tela = new TelaGerenciaDetalhe();
@@ -127,21 +124,20 @@ public class TelaGerencia extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btIncluirActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btMostrarRelacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMostrarRelacaoActionPerformed
         DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
         modelo.setNumRows(0);
         GerenciaVO gerenciaVO = new GerenciaVO();
         GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
         GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
-        
-           ArrayList<GerenciaVO>lista = gerenciaPERS.carregarTabela(txtBusca.getText());
-           
-        for(int i =0; i<lista.size();i++){
-           
+
+        ArrayList<GerenciaVO> lista = gerenciaPERS.carregarTabela(txtBusca.getText());
+
+        for (int i = 0; i < lista.size(); i++) {
             modelo.addRow(new Object[]{lista.get(i).getCod(), lista.get(i).getNome(), lista.get(i).getSalario()});
         }
-      
-    }//GEN-LAST:event_jButton1ActionPerformed
+
+    }//GEN-LAST:event_btMostrarRelacaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,10 +175,10 @@ public class TelaGerencia extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btIncluir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btModificar;
+    private javax.swing.JButton btMostrarRelacao;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbImagemFundo;
     private javax.swing.JTable tabela;
     private javax.swing.JTextField txtBusca;
     // End of variables declaration//GEN-END:variables

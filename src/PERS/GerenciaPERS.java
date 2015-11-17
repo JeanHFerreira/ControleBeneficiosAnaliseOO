@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PERS;
 
 import RN.GerenciaRN;
@@ -17,7 +12,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * @author Jean
+ * @author Andressa
  * @author Eric
  */
 public class GerenciaPERS {
@@ -30,7 +26,17 @@ public class GerenciaPERS {
     
     
     public void excluir(){
-        
+        int cod = this.getGerenciaRN().getGerenciaVO().getCod();
+        String sql;
+        Connection con = new Conexao().getConnection();
+        try (Statement stm = con.createStatement()) {
+            if(cod != 0){
+                sql = "delete from gerencia where gerenciacodigo = "+cod+"";
+                stm.executeUpdate(sql);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro.");
+        }
     }
 
     public void salvar() {
