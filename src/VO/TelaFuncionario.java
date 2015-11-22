@@ -16,7 +16,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
     public TelaFuncionario() {
         initComponents();
-        this.setSize(486, 330);
+        this.setSize(447, 323);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
     }
 
@@ -30,14 +30,13 @@ public class TelaFuncionario extends javax.swing.JFrame {
         btIncluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
-        lbImagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de funcionário");
         setResizable(false);
         getContentPane().setLayout(null);
         getContentPane().add(txtRelacao);
-        txtRelacao.setBounds(20, 10, 270, 20);
+        txtRelacao.setBounds(20, 20, 740, 20);
 
         btRelacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_lupa_buscar.png"))); // NOI18N
         btRelacao.addActionListener(new java.awt.event.ActionListener() {
@@ -46,7 +45,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btRelacao);
-        btRelacao.setBounds(330, 0, 50, 40);
+        btRelacao.setBounds(770, 10, 50, 30);
 
         btDetalhe.setText("Detalhe");
         btDetalhe.addActionListener(new java.awt.event.ActionListener() {
@@ -55,7 +54,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btDetalhe);
-        btDetalhe.setBounds(193, 260, 90, 23);
+        btDetalhe.setBounds(560, 260, 90, 23);
 
         btIncluir.setText("Incluir");
         btIncluir.addActionListener(new java.awt.event.ActionListener() {
@@ -64,32 +63,49 @@ public class TelaFuncionario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btIncluir);
-        btIncluir.setBounds(293, 260, 90, 23);
+        btIncluir.setBounds(730, 260, 90, 23);
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código", "Nome", "CPF"
+                "Código", "Nome", "Sexo", "RG", "CPF", "Data nascimento", "Nível", "Login", "Senha", "Endereço", "Cargo", "Gerencia"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jScrollPane1.setViewportView(tabela);
+        if (tabela.getColumnModel().getColumnCount() > 0) {
+            tabela.getColumnModel().getColumn(0).setResizable(false);
+            tabela.getColumnModel().getColumn(1).setResizable(false);
+            tabela.getColumnModel().getColumn(2).setResizable(false);
+            tabela.getColumnModel().getColumn(3).setResizable(false);
+            tabela.getColumnModel().getColumn(4).setResizable(false);
+            tabela.getColumnModel().getColumn(5).setResizable(false);
+            tabela.getColumnModel().getColumn(6).setResizable(false);
+            tabela.getColumnModel().getColumn(7).setResizable(false);
+            tabela.getColumnModel().getColumn(8).setResizable(false);
+            tabela.getColumnModel().getColumn(9).setResizable(false);
+            tabela.getColumnModel().getColumn(10).setResizable(false);
+            tabela.getColumnModel().getColumn(11).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 60, 380, 190);
-
-        lbImagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bg_telaBusca.png"))); // NOI18N
-        getContentPane().add(lbImagem);
-        lbImagem.setBounds(0, 0, 400, 300);
+        jScrollPane1.setBounds(10, 60, 820, 190);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -99,7 +115,20 @@ public class TelaFuncionario extends javax.swing.JFrame {
             FuncionarioVO funcionarioVO = new FuncionarioVO();
             funcionarioVO.setCod(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString()));
             funcionarioVO.setNome(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
-            funcionarioVO.setCpf(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
+            funcionarioVO.setSexo(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
+            funcionarioVO.setRg(tabela.getValueAt(tabela.getSelectedRow(), 3).toString());
+            funcionarioVO.setCpf(tabela.getValueAt(tabela.getSelectedRow(), 4).toString());
+            funcionarioVO.setDataNasc(tabela.getValueAt(tabela.getSelectedRow(), 5).toString());
+            funcionarioVO.setNivel(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 6).toString()));
+            funcionarioVO.setLogin(tabela.getValueAt(tabela.getSelectedRow(), 7).toString());
+            funcionarioVO.setSenha(tabela.getValueAt(tabela.getSelectedRow(), 8).toString());
+            funcionarioVO.setEndereço(tabela.getValueAt(tabela.getSelectedRow(), 9).toString());
+            CargoVO cargoVO = new CargoVO();
+            cargoVO.setNome(tabela.getValueAt(tabela.getSelectedRow(), 10).toString());
+            GerenciaVO gerenciaVO = new GerenciaVO();
+            gerenciaVO.setNome(tabela.getValueAt(tabela.getSelectedRow(), 11).toString());
+            funcionarioVO.setCargoVO(cargoVO);
+            funcionarioVO.setGerenciaVO(gerenciaVO);
             FuncionarioDetalhe telaFuncDetalhe = new FuncionarioDetalhe(funcionarioVO);
             telaFuncDetalhe.setarCombo(funcionarioVO);
             telaFuncDetalhe.setVisible(true);
@@ -128,7 +157,10 @@ public class TelaFuncionario extends javax.swing.JFrame {
         ArrayList<FuncionarioVO> lista = funcionarioPERS.carregarTabela(txtRelacao.getText());
 
         for (FuncionarioVO item : lista) {
-            modelo.addRow(new Object[]{item.getCod(), item.getNome(), item.getCpf()});
+            modelo.addRow(new Object[]{item.getCod(), item.getNome(), item.getSexo(),
+                item.getRg(), item.getCpf(), item.getDataNasc(), item.getNivel(),
+                item.getLogin(), item.getSenha(), item.getEndereço(),
+                item.getCargoVO().getNome(), item.getGerenciaVO().getNome()});
         }
     }//GEN-LAST:event_btRelacaoActionPerformed
 
@@ -172,7 +204,6 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton btIncluir;
     private javax.swing.JButton btRelacao;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbImagem;
     private javax.swing.JTable tabela;
     private javax.swing.JTextField txtRelacao;
     // End of variables declaration//GEN-END:variables
