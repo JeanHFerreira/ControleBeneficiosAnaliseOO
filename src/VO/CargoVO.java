@@ -23,6 +23,12 @@ public class CargoVO {
 
     }
 
+    public CargoVO(int cod, String nome, double salario) {
+        this.cod = cod;
+        this.nome = nome;
+        this.salario_base = salario;
+    }
+
     public CargoRN getCargoRN() {
         return cargoRN;
     }

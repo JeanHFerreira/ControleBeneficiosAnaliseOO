@@ -23,20 +23,22 @@ public class GerenciaPERS {
     public GerenciaPERS(GerenciaRN gerenciaRN) {
         this.setGerenciaRN(gerenciaRN);
     }
-    
-    
-    public void excluir(){
+
+    public boolean excluir() {
         int cod = this.getGerenciaRN().getGerenciaVO().getCod();
         String sql;
         Connection con = new Conexao().getConnection();
         try (Statement stm = con.createStatement()) {
-            if(cod != 0){
-                sql = "delete from gerencia where gerenciacodigo = "+cod+"";
+            if (cod != 0) {
+                sql = "delete from gerencia where gerenciacodigo = " + cod + "";
                 stm.executeUpdate(sql);
+                return true;
             }
         } catch (SQLException ex) {
             System.out.println("Erro.");
+            return false;
         }
+        return false;
     }
 
     public void salvar() {
@@ -46,22 +48,31 @@ public class GerenciaPERS {
         String sql;
         Connection con = new Conexao().getConnection();
         try (Statement stm = con.createStatement()) {
-            if(cod == 0){
-                sql = "insert into gerencia(gerencianome, gerenciaadicionalsalario)" + "values('" + nome + "'," + salario + ")";
-            }else{
-                sql = "update gerencia set gerencianome = '"+nome+"', gerenciaadicionalsalario = "+salario+" where gerenciacodigo = "+cod+"";
+            if (cod == 0) {
+                sql = "insert into gerencia(gerencianome, gerenciaadicionalsalario)" + "values('" + nome + "'," + salario + ") RETURNING gerenciacodigo";
+                ResultSet rs =  stm.executeQuery(sql);
+                rs.next();
+                int resultado = rs.getInt(1);
+                this.getGerenciaRN().getGerenciaVO().setCod(resultado);
+            } else {
+                sql = "update gerencia set gerencianome = '" + nome + "', gerenciaadicionalsalario = " + salario + " where gerenciacodigo = " + cod + "";
+                stm.executeUpdate(sql);
             }
-            stm.executeUpdate(sql);
+           
+            
+           
+             
         } catch (SQLException ex) {
             System.out.println("Erro.");
         }
+
     }
 
     public ArrayList<GerenciaVO> carregarTabela(String nome) {
         ArrayList<GerenciaVO> lista = new ArrayList<GerenciaVO>();
 
         Connection con = new Conexao().getConnection();
-        String sql = "select gerenciacodigo, gerencianome, gerenciaadicionalsalario from gerencia where gerencianome LIKE '%"+nome+"%'";
+        String sql = "select gerenciacodigo, gerencianome, gerenciaadicionalsalario from gerencia where gerencianome LIKE '%" + nome + "%'";
         Statement stm = null;
         try {
             stm = con.createStatement();

@@ -7,6 +7,7 @@ package VO;
 
 import PERS.GerenciaPERS;
 import RN.GerenciaRN;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,17 +18,29 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
     public void setBotaoSalvarEditar(String texto) {
         this.btSalvarEditar.setText(texto);
     }
+    public void setBotaoExcluir(String texto){
+        if(texto.equals("Incluir")){
+            this.btExcluir.setEnabled(false);
+        }
+        if(texto.equals("Editar")){
+            this.btExcluir.setEnabled(true);
+        }
+        
+        
+    }
 
     public TelaGerenciaDetalhe() {
         initComponents();
-        this.setSize(400, 185);
+        this.setSize(400, 200);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
 
     }
 
     public TelaGerenciaDetalhe(GerenciaVO gerenciaVO) {
         initComponents();
+        this.setSize(400, 200);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
+        
         
         lblCodGerencia.setText(""+gerenciaVO.getCod());
         txtNomeGerencia.setText(gerenciaVO.getNome());
@@ -51,7 +64,7 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
         txtNomeGerencia = new javax.swing.JTextField();
         txtSalarioAdicional = new javax.swing.JTextField();
         btSalvarEditar = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btExcluir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,7 +90,7 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
         lblCodGerencia.setForeground(new java.awt.Color(51, 51, 51));
         lblCodGerencia.setText("-");
         getContentPane().add(lblCodGerencia);
-        lblCodGerencia.setBounds(100, 30, 5, 15);
+        lblCodGerencia.setBounds(100, 30, 70, 15);
 
         txtNomeGerencia.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         txtNomeGerencia.addActionListener(new java.awt.event.ActionListener() {
@@ -105,17 +118,17 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btSalvarEditar);
-        btSalvarEditar.setBounds(180, 120, 108, 27);
+        btSalvarEditar.setBounds(140, 120, 108, 27);
 
-        jButton2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        jButton2.setText("Excluir");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btExcluir.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
+        btExcluir.setText("Excluir");
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btExcluirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(280, 120, 66, 27);
+        getContentPane().add(btExcluir);
+        btExcluir.setBounds(256, 120, 90, 27);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_gerenciaDetalhe.png"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -131,6 +144,7 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
     private void btSalvarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarEditarActionPerformed
         if (btSalvarEditar.getText().equals("Salvar")) {
             btSalvarEditar.setText("Editar");
+            setBotaoExcluir(btSalvarEditar.getText());
             txtNomeGerencia.setEnabled(false);
             txtSalarioAdicional.setEnabled(false);
             int codigo;
@@ -145,6 +159,7 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
             GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
             GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
             gerenciaPERS.salvar();
+            this.lblCodGerencia.setText(""+gerenciaVO.getCod());
 
         } else {
             if (btSalvarEditar.getText().equals("Editar")) {
@@ -160,7 +175,7 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSalarioAdicionalActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
        GerenciaVO gerenciaVO = new GerenciaVO();
        gerenciaVO.setCod(Integer.parseInt(lblCodGerencia.getText()));
        gerenciaVO.setNome(txtNomeGerencia.getText());
@@ -168,10 +183,20 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
        GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
        GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
        
-       gerenciaPERS.excluir();
+       
+       if(gerenciaPERS.excluir()){
+           JOptionPane.showMessageDialog(this,"Excluído com sucesso!");
+           this.lblCodGerencia.setText("-");
+           this.txtNomeGerencia.setText("");
+           this.txtSalarioAdicional.setText("");
+       }else{
+           JOptionPane.showMessageDialog(this,"Erro ao excluir!");
+       }
+    
        
        
-    }//GEN-LAST:event_jButton2ActionPerformed
+       
+    }//GEN-LAST:event_btExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,8 +235,8 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btExcluir;
     private javax.swing.JButton btSalvarEditar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -50,11 +50,11 @@ public class TelaGerencia extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btModificar);
-        btModificar.setBounds(230, 240, 110, 25);
+        btModificar.setBounds(230, 240, 110, 27);
 
         txtBusca.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         getContentPane().add(txtBusca);
-        txtBusca.setBounds(40, 6, 370, 22);
+        txtBusca.setBounds(40, 6, 370, 27);
 
         btMostrarRelacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_lupa_buscar.png"))); // NOI18N
         btMostrarRelacao.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +73,7 @@ public class TelaGerencia extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btIncluir);
-        btIncluir.setBounds(345, 240, 120, 25);
+        btIncluir.setBounds(345, 240, 120, 27);
 
         tabela.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         tabela.setModel(new javax.swing.table.DefaultTableModel(
@@ -120,6 +120,7 @@ public class TelaGerencia extends javax.swing.JFrame {
     private void btIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIncluirActionPerformed
         TelaGerenciaDetalhe tela = new TelaGerenciaDetalhe();
         tela.setBotaoSalvarEditar("Salvar");
+        tela.setBotaoExcluir(this.btIncluir.getText());
         tela.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btIncluirActionPerformed
