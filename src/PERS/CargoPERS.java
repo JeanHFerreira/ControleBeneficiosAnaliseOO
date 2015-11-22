@@ -27,20 +27,57 @@ public class CargoPERS {
         this.setCargoRN(cargoRN);
     }
 
-    public void salvar() {
+    public boolean excluir() {
         int cod = this.getCargoRN().getCargoVO().getCod();
-        String nome = this.getCargoRN().getCargoVO().getNome();
-        int cod_gerencia = this.getCargoRN().getCargoVO().getCod_gerencia();
-        Double salario_base = this.getCargoRN().getCargoVO().getSalario_base();
-
+        String nome = this.getCargoRN().getCargoVO().getNome().trim();
+        Double salario = this.getCargoRN().getCargoVO().getSalario_base();
+        if (cod <= -1 || nome == null || nome.equals("") || salario <= 0.0) {
+            return false;
+        }
+        String sql;
         Connection con = new Conexao().getConnection();
         try (Statement stm = con.createStatement()) {
-            String sql = ""; //Antes de criar a SQL, verificar como será inserido o codigo da gerencia
-            stm.executeUpdate(sql);
+            if (cod != 0) {
+                sql = "delete from cargo where cargocodigo = " + cod + "";
+                stm.executeUpdate(sql);
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro.");
+            return false;
+        }
+        return false;
+    }
+
+    public boolean salvar() {
+        int cod = this.getCargoRN().getCargoVO().getCod();
+        String nome = this.getCargoRN().getCargoVO().getNome();
+        double salario = this.getCargoRN().getCargoVO().getSalario_base();
+        int cod_gerencia = this.getCargoRN().getCargoVO().getCod_gerencia();
+        //Validação
+        if (cod == -1 || nome == null || nome.trim().equals("") || salario <= 0.0) {
+            return false;
+        }
+
+        String sql;
+        Connection con = new Conexao().getConnection();
+        try (Statement stm = con.createStatement()) {
+            if (cod == 0) {
+                sql = "insert into cargo(cargonome, cargosalariobase)" + "values('" + nome + "'," + salario + ") RETURNING cargocodigo";
+                ResultSet rs = stm.executeQuery(sql);
+                rs.next();
+                int resultado = rs.getInt(1);
+                this.getCargoRN().getCargoVO().setCod(resultado);
+            } else {
+                sql = "update cargo set cargonome = '" + nome + "', cargosalariobase = " + salario + " where cargocodigo = " + cod + "";
+                stm.executeUpdate(sql);
+
+            }
+            return true;
         } catch (SQLException ex) {
             System.out.println("Erro.");
         }
-
+        return false;
     }
 
     public ArrayList<CargoVO> carregarTabela(String nome) {

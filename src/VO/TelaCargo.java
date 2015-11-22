@@ -9,6 +9,7 @@ import PERS.CargoPERS;
 import PERS.GerenciaPERS;
 import RN.CargoRN;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -39,8 +40,8 @@ public class TelaCargo extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btModificar = new javax.swing.JButton();
+        btIncluir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -83,18 +84,23 @@ public class TelaCargo extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(10, 60, 440, 190);
 
-        jButton2.setText("Modificar");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(200, 260, 130, 28);
-
-        jButton3.setText("Incluir");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btModificar.setText("Modificar");
+        btModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btModificarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(333, 260, 100, 28);
+        getContentPane().add(btModificar);
+        btModificar.setBounds(200, 260, 130, 28);
+
+        btIncluir.setText("Incluir");
+        btIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btIncluirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btIncluir);
+        btIncluir.setBounds(333, 260, 100, 28);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bg_telaBusca.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -121,10 +127,34 @@ public class TelaCargo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIncluirActionPerformed
+        TelaCargoDetalhe tela = new TelaCargoDetalhe();
+        tela.setBotaoModificador("Salvar");
+        tela.setBotaoExcluir(this.btIncluir.getText());
+        tela.setVisible(true);
+        this.dispose();
 
+    }//GEN-LAST:event_btIncluirActionPerformed
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModificarActionPerformed
+        if (tabela.getSelectedRowCount() == 1) {
+            CargoVO cargoVO = new CargoVO();
+            cargoVO.setCod(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString()));
+            cargoVO.setNome(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
+            cargoVO.setSalario_base(Double.parseDouble(tabela.getValueAt(tabela.getSelectedRow(), 2).toString()));
+            TelaCargoDetalhe tela = new TelaCargoDetalhe(cargoVO);
+            tela.setBotaoModificador("Salvar");
+            tela.setVisible(true);
+            this.dispose();
+        } else {
+            if (tabela.getSelectedRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Selecione um item para modificar", null, JOptionPane.ERROR_MESSAGE, null);
+            } else {
+                JOptionPane.showMessageDialog(this, "Selecione somente um item para modificar", null, JOptionPane.ERROR_MESSAGE, null);
+            }
+        }
+
+    }//GEN-LAST:event_btModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,9 +192,9 @@ public class TelaCargo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btIncluir;
+    private javax.swing.JButton btModificar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabela;
