@@ -1,7 +1,10 @@
 package VO;
 
 import VO.FuncionarioVO;
+import RN.FuncionarioRN;
+import PERS.FuncionarioPERS;
 import VO.TelaDependente;
+import java.util.ArrayList;
 
 /**
  * @author Jean
@@ -26,8 +29,19 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
     }
 
     public void setarCombo(FuncionarioVO funcionarioVO) {
-        //Busca todos os cargos
-
+        FuncionarioRN funcionarioRN = new FuncionarioRN(funcionarioVO);
+        FuncionarioPERS funcionarioPERS = new FuncionarioPERS(funcionarioRN);
+        ArrayList <CargoVO> listaCargo = funcionarioPERS.BuscarComboCargo();
+        ArrayList <GerenciaVO> listaGerencia = funcionarioPERS.BuscarComboGerencia();
+        
+        for(int i = 0; i<listaCargo.size(); i++){
+            this.cbCargo.addItem(listaCargo.get(i));
+        }
+        
+        for(int i = 0; i<listaGerencia.size(); i++){
+            this.cbGerencia.addItem(listaGerencia.get(i));
+        }
+        
         if (funcionarioVO != null) {
             //this.cbCargo.setSelectedIndex();//setar indice do combo
         }
@@ -70,24 +84,11 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         lbCpf.setBounds(20, 80, 19, 14);
         getContentPane().add(txtSalario);
         txtSalario.setBounds(70, 170, 230, 20);
-
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
-            }
-        });
         getContentPane().add(txtNome);
         txtNome.setBounds(70, 50, 230, 20);
-
-        txtCpf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCpfActionPerformed(evt);
-            }
-        });
         getContentPane().add(txtCpf);
         txtCpf.setBounds(70, 80, 230, 20);
 
-        cbCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cbCargo);
         cbCargo.setBounds(70, 110, 230, 20);
 
@@ -134,20 +135,11 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         getContentPane().add(lbGerencia);
         lbGerencia.setBounds(10, 140, 50, 14);
 
-        cbGerencia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cbGerencia);
         cbGerencia.setBounds(70, 140, 230, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCpfActionPerformed
-
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btDependenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDependenteActionPerformed
         if (!this.txtCodigo.getText().equals("-")) {
