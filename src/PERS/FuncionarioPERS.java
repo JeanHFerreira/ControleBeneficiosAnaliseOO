@@ -72,13 +72,13 @@ public class FuncionarioPERS {
         ArrayList<FuncionarioVO> lista = new ArrayList<>();
 
         Connection con = new Conexao().getConnection();
-        String sql = "select funcionario.funcionariocodigo,funcionario.funcionarionome, funcionario.funcionariosexo, funcionario.funcionariorg, funcionario.funcionariocpf,\n"
-                + "funcionario.funcionariodatanascimento,funcionario.funcionarionivel,funcionario.funcionariologin,funcionario.funcionariosenha,funcionario.funcionarioendereco,cargo.cargocodigo,\n"
-                + "cargo.cargonome,cargo.cargosalariobase,gerencia.gerenciacodigo,gerencia.gerencianome,gerencia.gerenciaadicionalsalario\n"
-                + "from funcionario\n"
-                + "inner join cargo on funcionario.cargocodigo = cargo.cargocodigo\n"
-                + "inner join gerencia on funcionario.gerenciacodigo = gerencia.gerenciacodigo\n"
-                + "where funcionarionome LIKE '%\"+nome+\"%';";
+        String sql = "select funcionario.funcionariocodigo,funcionario.funcionarionome, funcionario.funcionariosexo, funcionario.funcionariorg, funcionario.funcionariocpf,"
+                + "funcionario.funcionariodatanascimento,funcionario.funcionarionivel,funcionario.funcionariologin,funcionario.funcionariosenha,funcionario.funcionarioendereco,cargo.cargocodigo,"
+                + "cargo.cargonome,cargo.cargosalariobase,gerencia.gerenciacodigo,gerencia.gerencianome,gerencia.gerenciaadicionalsalario"
+                + "from funcionario"
+                + "inner join cargo on funcionario.cargocodigo = cargo.cargocodigo"
+                + "inner join gerencia on funcionario.gerenciacodigo = gerencia.gerenciacodigo"
+                + "where funcionarionome LIKE '%'+'"+nome+"'+'%'";
         Statement stm = null;
         ResultSet rs = null;
         try {
