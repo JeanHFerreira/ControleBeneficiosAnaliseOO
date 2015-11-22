@@ -16,11 +16,13 @@ public class CargoVO {
     private CargoRN cargoRN;
     private int cod;
     private String nome;
-    private int cod_gerencia;
-    private Double salario_base;
+    private double salario_base;
 
     CargoVO() {
-
+        this.cargoRN = null;
+        this.cod = 0;
+        this.nome = null;
+        this.salario_base = -1.0;
     }
 
     public CargoVO(int cod, String nome, double salario) {
@@ -52,14 +54,6 @@ public class CargoVO {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public int getCod_gerencia() {
-        return cod_gerencia;
-    }
-
-    public void setCod_gerencia(int cod_gerencia) {
-        this.cod_gerencia = cod_gerencia;
     }
 
     public Double getSalario_base() {

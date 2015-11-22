@@ -13,16 +13,16 @@ import java.util.ArrayList;
  */
 public class FuncionarioDetalhe extends javax.swing.JFrame {
     
-    private ArrayList <CargoVO> listaCargo;
-    private ArrayList <GerenciaVO> listaGerencia;
-            
+    private ArrayList<CargoVO> listaCargo;
+    private ArrayList<GerenciaVO> listaGerencia;
+    
     public FuncionarioDetalhe() {
         initComponents();
         this.setSize(486, 330);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
         this.btDependente.setEnabled(false);
     }
-
+    
     public FuncionarioDetalhe(FuncionarioVO funcionarioVO) {
         initComponents();
         this.setSize(486, 330);
@@ -30,26 +30,33 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         this.btDependente.setEnabled(true);
         //Setar campos com os dados do funcionarioVO -- funcionarioVO.get...
     }
-
+    
     public void setarCombo(FuncionarioVO funcionarioVO) {
         FuncionarioRN funcionarioRN = new FuncionarioRN(funcionarioVO);
         FuncionarioPERS funcionarioPERS = new FuncionarioPERS(funcionarioRN);
         this.listaCargo = funcionarioPERS.BuscarComboCargo();
         this.listaGerencia = funcionarioPERS.BuscarComboGerencia();
-        
-        for(int i = 0; i<this.listaCargo.size(); i++){
+        int index = 0;
+        for (int i = 0; i < this.listaCargo.size(); i++) {
             this.cbCargo.addItem(this.listaCargo.get(i).getNome());
+            if ((funcionarioVO != null) 
+                    && (this.listaCargo.get(i).getNome().equals(funcionarioVO.getCargoVO().getNome()))) {
+                index = i;
+            }
         }
+        this.cbCargo.setSelectedIndex(index);
+        index=0;
         
-        for(int i = 0; i<this.listaGerencia.size(); i++){
+        for (int i = 0; i < this.listaGerencia.size(); i++) {
             this.cbGerencia.addItem(this.listaGerencia.get(i).getNome());
+            if ((funcionarioVO != null) 
+                    && (this.listaGerencia.get(i).getNome().equals(funcionarioVO.getGerenciaVO().getNome()))) {
+                index = i;
+            }
         }
-        
-        if (funcionarioVO != null) {
-            //this.cbCargo.setSelectedIndex();//setar indice do combo
-        }
+        this.cbGerencia.setSelectedIndex(index);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -156,16 +163,35 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
 
     private void btSalvarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarEditarActionPerformed
         if (btSalvarEditar.getText().equals("Editar")) {
-
+             this.txtCodigo.setEnabled(true);
+                this.txtCpf.setEnabled(true);
+                this.txtNome.setEnabled(true);
+                this.txtSalario.setEnabled(true);
+                this.cbCargo.setEnabled(true);
+                this.cbGerencia.setEnabled(true);
+                FuncionarioVO funcionarioVO = new FuncionarioVO();
+                FuncionarioRN funcionarioRN = new FuncionarioRN(funcionarioVO);
+                FuncionarioPERS funcionarioPERS = new FuncionarioPERS(funcionarioRN);
+                if(funcionarioPERS.salvar()){
+                    
+                }else{
+                    
+                }
         } else {
             if (btSalvarEditar.getText().equals("Salvar")) {
-
+                this.txtCodigo.setEnabled(false);
+                this.txtCpf.setEnabled(false);
+                this.txtNome.setEnabled(false);
+                this.txtSalario.setEnabled(false);
+                this.cbCargo.setEnabled(false);
+                this.cbGerencia.setEnabled(false);
+                
             }
         }
     }//GEN-LAST:event_btSalvarEditarActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-        
+
     }//GEN-LAST:event_btExcluirActionPerformed
 
     /**

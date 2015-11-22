@@ -1,7 +1,6 @@
 package PERS;
 
 import RN.GerenciaRN;
-import VO.BeneficioVO;
 import VO.GerenciaVO;
 import java.sql.Connection;
 import java.sql.ResultSet;

@@ -53,7 +53,6 @@ public class CargoPERS {
         int cod = this.getCargoRN().getCargoVO().getCod();
         String nome = this.getCargoRN().getCargoVO().getNome();
         double salario = this.getCargoRN().getCargoVO().getSalario_base();
-        int cod_gerencia = this.getCargoRN().getCargoVO().getCod_gerencia();
         //Validação
         if (cod == -1 || nome == null || nome.trim().equals("") || salario <= 0.0) {
             return false;

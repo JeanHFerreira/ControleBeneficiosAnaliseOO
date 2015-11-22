@@ -13,4 +13,16 @@ public class FuncionarioRN {
     public FuncionarioRN(FuncionarioVO funcionarioVO) {
         this.funcionarioVO = funcionarioVO;
     }
+    
+    public FuncionarioVO getFuncionarioVO(){
+        return funcionarioVO;
+    }
+    
+    public void setFuncionarioVO(FuncionarioVO funcionarioVO){
+        this.funcionarioVO=funcionarioVO;
+    }
+
+    public boolean validarCpf(String cpf) {
+       return true;
+    }
 }
