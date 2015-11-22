@@ -4,6 +4,7 @@ import PERS.FuncionarioPERS;
 import RN.FuncionarioRN;
 import VO.FuncionarioVO;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -94,11 +95,21 @@ public class TelaFuncionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btDetalheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDetalheActionPerformed
-        FuncionarioVO funcionarioVO = new FuncionarioVO(); 
-        //funcionarioVO.setCod();
-        FuncionarioDetalhe telaFuncDetalhe = new FuncionarioDetalhe(funcionarioVO);
-        telaFuncDetalhe.setarCombo(funcionarioVO);
-        telaFuncDetalhe.setVisible(true);
+        if (this.tabela.getSelectedRowCount() == 1) {
+            FuncionarioVO funcionarioVO = new FuncionarioVO();
+            funcionarioVO.setCod(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(), 0).toString()));
+            funcionarioVO.setNome(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
+            funcionarioVO.setCpf(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
+            FuncionarioDetalhe telaFuncDetalhe = new FuncionarioDetalhe(funcionarioVO);
+            telaFuncDetalhe.setarCombo(funcionarioVO);
+            telaFuncDetalhe.setVisible(true);
+        } else {
+            if (tabela.getSelectedRowCount() == 0) {
+                JOptionPane.showMessageDialog(this, "Selecione um item para modificar", null, JOptionPane.ERROR_MESSAGE, null);
+            } else {
+                JOptionPane.showMessageDialog(this, "Selecione somente um item para modificar", null, JOptionPane.ERROR_MESSAGE, null);
+            }
+        }
     }//GEN-LAST:event_btDetalheActionPerformed
 
     private void btIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIncluirActionPerformed
@@ -116,8 +127,8 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
         ArrayList<FuncionarioVO> lista = funcionarioPERS.carregarTabela(txtRelacao.getText());
 
-        for (int i = 0; i < lista.size(); i++) {
-            modelo.addRow(new Object[]{lista.get(i).getCod(), lista.get(i).getNome(), lista.get(i).getCpf()});
+        for (FuncionarioVO item : lista) {
+            modelo.addRow(new Object[]{item.getCod(), item.getNome(), item.getCpf()});
         }
     }//GEN-LAST:event_btRelacaoActionPerformed
 
