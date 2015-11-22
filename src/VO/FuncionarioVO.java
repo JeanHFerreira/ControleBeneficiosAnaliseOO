@@ -8,16 +8,27 @@ import RN.FuncionarioRN;
  * @author Eric
  */
 public class FuncionarioVO {
+
     private int cod;
-    
+
     private FuncionarioRN funcionarioRN;
     private String nome;
     private String cpf;
+    private CargoVO cargoVO;
+    private GerenciaVO gerenciaVO;
 
     public FuncionarioVO(int cod, String nome, String cpf) {
         this.cod = cod;
         this.nome = nome;
         this.cpf = cpf;
+    }
+
+    public FuncionarioVO(int cod, String nome, String cpf,CargoVO cargoVO, GerenciaVO gerenciaVO) {
+        this.cod = cod;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.cargoVO = cargoVO;
+        this.gerenciaVO = gerenciaVO;
     }
 
     public FuncionarioVO() {
@@ -49,5 +60,20 @@ public class FuncionarioVO {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    
+
+    public CargoVO getCargoVO() {
+        return cargoVO;
+    }
+
+    public void setCargoVO(CargoVO cargoVO) {
+        this.cargoVO = cargoVO;
+    }
+
+    public GerenciaVO getGerenciaVO() {
+        return this.gerenciaVO;
+    }
+
+    public void setGerenciaVO(GerenciaVO gerenciaVO) {
+        this.gerenciaVO = gerenciaVO;
+    }
 }
