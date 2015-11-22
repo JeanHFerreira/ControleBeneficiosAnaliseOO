@@ -29,6 +29,14 @@ public class FuncionarioPERS {
         String cpf = this.getFuncionarioRN().getFuncionarioVO().getCpf();
         int cargoCodigo = this.getFuncionarioRN().getFuncionarioVO().getCargoVO().getCod();
         int gerenciaCodigo = this.getFuncionarioRN().getFuncionarioVO().getGerenciaVO().getCod();
+        String sexo = this.getFuncionarioRN().getFuncionarioVO().getSexo();
+        String rg = this.getFuncionarioRN().getFuncionarioVO().getRg();
+        String dataNasc = this.getFuncionarioRN().getFuncionarioVO().getDataNasc();
+        int nivel = this.getFuncionarioRN().getFuncionarioVO().getNivel();
+        String login = this.getFuncionarioRN().getFuncionarioVO().getLogin();
+        String senha = this.getFuncionarioRN().getFuncionarioVO().getSenha();
+        String endereço = this.getFuncionarioRN().getFuncionarioVO().getEndereço();
+
         //Validação
         if (cod == -1 || nome == null || nome.trim().equals("")
                 || cpf.trim().equals("") || this.getFuncionarioRN().validarCpf(cpf)) {
@@ -39,15 +47,31 @@ public class FuncionarioPERS {
         Connection con = new Conexao().getConnection();
         try (Statement stm = con.createStatement()) {
             if (cod == 0) {
-                sql = "insert into funcionario(funcionarionome, "
-                        + "funcionariocpf, "
-                        + "cargocodigo, "
-                        + "gerenciacodigo)"
-                        + "values('" + nome + "',"
-                        + cpf + ","
-                        + ((cargoCodigo > 0) ? gerenciaCodigo : "null")
-                        + "," + ((gerenciaCodigo > 0) ? gerenciaCodigo : "null") + ")"
-                        + "RETURNING funcionariocodigo";
+                sql = "insert into funcionario(";
+                sql+="funcionariocodigo,"
+                + "funcionarionome, "
+                + "funcionariosexo, "
+                + "funcionariorg, "
+                + "funcionariocpf,"
+                + "funcionariodatanascimento,"
+                + "funcionarionivel,"
+                + "funcionariologin,"
+                + "funcionariosenha,"
+                + "funcionarioendereco,"
+                + "cargocodigo,"
+                + "gerenciacodigo) values(";
+                sql+= ""+cod+","+
+                nome+","+
+                sexo+","+
+                rg+","+
+                dataNasc+","+
+                nivel+","+
+                login+","+
+                senha+","+
+                endereço+","+
+                cargoCodigo+","+
+                gerenciaCodigo+","+
+                 ") RETURNING funcionariocodigo";
                 ResultSet rs = stm.executeQuery(sql);
                 rs.next();
                 int resultado = rs.getInt(1);
@@ -91,7 +115,7 @@ public class FuncionarioPERS {
                 + "from funcionario"
                 + "inner join cargo on funcionario.cargocodigo = cargo.cargocodigo"
                 + "inner join gerencia on funcionario.gerenciacodigo = gerencia.gerenciacodigo"
-                + "where funcionarionome LIKE '%'+'"+nome+"'+'%'";
+                + "where funcionarionome LIKE '%'+'" + nome + "'+'%'";
         Statement stm = null;
         ResultSet rs = null;
         try {
