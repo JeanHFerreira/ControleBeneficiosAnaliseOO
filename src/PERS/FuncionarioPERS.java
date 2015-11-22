@@ -72,26 +72,13 @@ public class FuncionarioPERS {
         ArrayList<FuncionarioVO> lista = new ArrayList<>();
 
         Connection con = new Conexao().getConnection();
-        String sql = "select F.funcionariocodigo, "
-                + "F.funcionarionome, "
-                + "F.funcionariosexo,"
-                + "F.funcionariorg,"
-                + "F.funcionariocpf,"
-                + "F.funcionariodatanascimento,"
-                + "F.funcionarionivel,"
-                + "F.funcionariologin,"
-                + "F.funcionariosenha,"
-                + "F.funcionarioendereco,"
-                + "C.cargocodigo,"
-                + "C.cargonome,"
-                + "C.cargosalariobase,"
-                + "G.gerenciacodigo,"
-                + "G.gerencianome,"
-                + "G.gerenciadicionalsalario"
-                + "from funcionario F";
-        sql += "inner join cargo C on F.cargocodigo = C.cargocodigo";
-        sql += "inner join gerencia G on G.gerenciacodigo = G.gerencianome";
-        sql += "where funcionarionome LIKE '%" + nome + "%'";
+        String sql = "select funcionario.funcionariocodigo,funcionario.funcionarionome, funcionario.funcionariosexo, funcionario.funcionariorg, funcionario.funcionariocpf,\n"
+                + "funcionario.funcionariodatanascimento,funcionario.funcionarionivel,funcionario.funcionariologin,funcionario.funcionariosenha,funcionario.funcionarioendereco,cargo.cargocodigo,\n"
+                + "cargo.cargonome,cargo.cargosalariobase,gerencia.gerenciacodigo,gerencia.gerencianome,gerencia.gerenciaadicionalsalario\n"
+                + "from funcionario\n"
+                + "inner join cargo on funcionario.cargocodigo = cargo.cargocodigo\n"
+                + "inner join gerencia on funcionario.gerenciacodigo = gerencia.gerenciacodigo\n"
+                + "where funcionarionome LIKE '%\"+nome+\"%';";
         Statement stm = null;
         ResultSet rs = null;
         try {
@@ -103,11 +90,11 @@ public class FuncionarioPERS {
                 String sexo = rs.getString(3);
                 String rg = rs.getString(4);
                 String cpf = rs.getString(5);
-                String dataNasc= rs.getString(6);
-                int nivel= rs.getInt(7);
-                String login= rs.getString(8);
-                String senha= rs.getString(9);
-                String endereço= rs.getString(10);
+                String dataNasc = rs.getString(6);
+                int nivel = rs.getInt(7);
+                String login = rs.getString(8);
+                String senha = rs.getString(9);
+                String endereço = rs.getString(10);
                 int idCargo = rs.getInt(11);
                 String nomeCargo = rs.getString(12);
                 double salarioCargo = rs.getDouble(13);

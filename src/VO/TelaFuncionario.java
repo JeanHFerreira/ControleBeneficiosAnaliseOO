@@ -16,7 +16,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
     public TelaFuncionario() {
         initComponents();
-        this.setSize(447, 323);
+        this.setSize(800, 323);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
     }
 
