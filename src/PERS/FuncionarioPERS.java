@@ -64,14 +64,14 @@ public class FuncionarioPERS {
     public ArrayList<CargoVO> BuscarComboCargo() {
         ArrayList <CargoVO> lista = new ArrayList<CargoVO>();
         Connection con = new Conexao().getConnection();
-        String sql = "select cargocodigo, cargonome from cargos";
+        String sql = "select cargocodigo, cargonome from cargo";
         Statement stm = null;
         ResultSet rs = null;
         try {
             stm = con.createStatement();
             rs = stm.executeQuery(sql);
         } catch (SQLException ex) {
-            System.out.println("Erro na sql de cargo");
+            System.out.println("Erro na sql de cargo\nErro:"+ex.getMessage());
         }
         try {
             while (rs.next()) {
@@ -99,7 +99,7 @@ public class FuncionarioPERS {
             stm = con.createStatement();
             rs = stm.executeQuery(sql);
         } catch (SQLException ex) {
-            System.out.println("Erro na sql de gerencia");
+            System.out.println("Erro na sql de gerencia\nErro:"+ex.getMessage());
         }
         try {
             while (rs.next()) {
