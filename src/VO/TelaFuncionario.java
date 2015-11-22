@@ -16,7 +16,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
     public TelaFuncionario() {
         initComponents();
-        this.setSize(800, 323);
+        this.setSize(900, 323);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
     }
 
@@ -36,7 +36,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
         getContentPane().add(txtRelacao);
-        txtRelacao.setBounds(20, 20, 740, 20);
+        txtRelacao.setBounds(20, 10, 740, 30);
 
         btRelacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_lupa_buscar.png"))); // NOI18N
         btRelacao.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +63,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btIncluir);
-        btIncluir.setBounds(730, 260, 90, 23);
+        btIncluir.setBounds(790, 260, 90, 23);
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,16 +76,9 @@ public class TelaFuncionario extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false
-            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tabela);
@@ -105,7 +98,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 60, 820, 190);
+        jScrollPane1.setBounds(10, 60, 880, 190);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -153,11 +146,15 @@ public class TelaFuncionario extends javax.swing.JFrame {
         FuncionarioVO funcionarioVO = new FuncionarioVO();
         FuncionarioRN funcionarioRN = new FuncionarioRN(funcionarioVO);
         FuncionarioPERS funcionarioPERS = new FuncionarioPERS(funcionarioRN);
-
-        ArrayList<FuncionarioVO> lista = funcionarioPERS.carregarTabela(txtRelacao.getText());
+        String texto = txtRelacao.getText();
+        if (texto == null) {
+            texto = "";
+        }
+        ArrayList<FuncionarioVO> lista = funcionarioPERS.carregarTabela(texto);
 
         for (FuncionarioVO item : lista) {
-            modelo.addRow(new Object[]{item.getCod(), item.getNome(), item.getSexo(),
+            modelo.addRow(new Object[]{
+                item.getCod(), item.getNome(), item.getSexo(),
                 item.getRg(), item.getCpf(), item.getDataNasc(), item.getNivel(),
                 item.getLogin(), item.getSenha(), item.getEndereço(),
                 item.getCargoVO().getNome(), item.getGerenciaVO().getNome()});
