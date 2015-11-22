@@ -35,7 +35,6 @@ public class TelaCargoDetalhe extends javax.swing.JFrame {
 
     public TelaCargoDetalhe() {
         initComponents();
-        initComponents();
         this.setSize(400, 200);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
     }
@@ -71,19 +70,19 @@ public class TelaCargoDetalhe extends javax.swing.JFrame {
 
         jLabel2.setText("Salário");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(45, 93, 41, 14);
+        jLabel2.setBounds(45, 93, 41, 16);
 
         jLabel3.setText("Cod");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(60, 30, 41, 14);
+        jLabel3.setBounds(60, 30, 41, 16);
 
         jLabel4.setText("Nome");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(50, 60, 41, 14);
+        jLabel4.setBounds(50, 60, 41, 16);
 
         lblCodCargo.setText("-");
         getContentPane().add(lblCodCargo);
-        lblCodCargo.setBounds(100, 30, 160, 14);
+        lblCodCargo.setBounds(100, 30, 160, 16);
 
         btExcluir.setText("Excluir");
         btExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -92,16 +91,16 @@ public class TelaCargoDetalhe extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(300, 130, 80, 23);
+        btExcluir.setBounds(300, 130, 80, 28);
 
-        btSalvarEditar.setText("Salvar");
+        btSalvarEditar.setText("Qualquer coisa");
         btSalvarEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btSalvarEditarActionPerformed(evt);
             }
         });
         getContentPane().add(btSalvarEditar);
-        btSalvarEditar.setBounds(130, 130, 150, 23);
+        btSalvarEditar.setBounds(130, 130, 150, 28);
 
         txtNomeCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +108,7 @@ public class TelaCargoDetalhe extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNomeCargo);
-        txtNomeCargo.setBounds(90, 60, 250, 20);
+        txtNomeCargo.setBounds(90, 58, 250, 30);
 
         txtSalarioCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,7 +116,7 @@ public class TelaCargoDetalhe extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSalarioCargo);
-        txtSalarioCargo.setBounds(90, 90, 250, 20);
+        txtSalarioCargo.setBounds(90, 90, 250, 30);
 
         jButton1.setText("Voltar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +125,7 @@ public class TelaCargoDetalhe extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(10, 130, 80, 23);
+        jButton1.setBounds(10, 130, 80, 28);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_gerenciaDetalhe.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -173,12 +172,14 @@ public class TelaCargoDetalhe extends javax.swing.JFrame {
             CargoPERS cargoPERS = new CargoPERS(cargoRN);
             cargoPERS.salvar();
             this.lblCodCargo.setText("" + cargoVO.getCod());
+            this.btExcluir.setEnabled(true);
 
         } else {
             if (btSalvarEditar.getText().equals("Editar")) {
                 btSalvarEditar.setText("Salvar");
                 txtNomeCargo.setEnabled(true);
                 txtSalarioCargo.setEnabled(true);
+                this.btExcluir.setEnabled(false);
             }
         }
 
