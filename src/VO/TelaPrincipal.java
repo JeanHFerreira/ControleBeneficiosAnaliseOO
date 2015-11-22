@@ -1,5 +1,9 @@
 package VO;
 
+import VO.TelaCargo;
+import VO.TelaFuncionario;
+import VO.TelaGerencia;
+
 /**
  * @author Ericson
  * @author Andressa
@@ -22,9 +26,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         miFuncionario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Controle de benefícios");
+        setResizable(false);
 
         mnCadastroDiversos.setText("Cadastros diversos");
 
+        miGerencia.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
         miGerencia.setText("Gerencia");
         miGerencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -33,6 +40,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mnCadastroDiversos.add(miGerencia);
 
+        miCargo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_H, java.awt.event.InputEvent.CTRL_MASK));
         miCargo.setText("Cargo");
         miCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -41,6 +49,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         mnCadastroDiversos.add(miCargo);
 
+        miFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
         miFuncionario.setText("Funcionario");
         miFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,24 +66,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 241, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 65, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void miFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miFuncionarioActionPerformed
-        /*TelaFuncionario telaFuncionario = new TelaFuncionario();
-         telaFuncionario.funcionario.setVisible();*/
+        TelaFuncionario telaFuncionario = new TelaFuncionario();
+        telaFuncionario.setVisible(true);
     }//GEN-LAST:event_miFuncionarioActionPerformed
 
     private void miCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miCargoActionPerformed
-        /*TelaCargo telaCargo = new TelaCargo();
-         telaCargo.setVisible(true);*/
+        TelaCargo telaCargo = new TelaCargo();
+         telaCargo.setVisible(true);
     }//GEN-LAST:event_miCargoActionPerformed
 
     private void miGerenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miGerenciaActionPerformed

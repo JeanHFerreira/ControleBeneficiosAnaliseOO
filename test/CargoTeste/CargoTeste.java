@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package CargoTeste;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -15,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author Jean_H_xD
  */
-public class Testes {
+public class CargoTeste {
     
-    public Testes() {
+    public CargoTeste() {
     }
     
     @BeforeClass

@@ -26,6 +26,11 @@ public class GerenciaPERS {
 
     public boolean excluir() {
         int cod = this.getGerenciaRN().getGerenciaVO().getCod();
+        String nome = this.getGerenciaRN().getGerenciaVO().getNome().trim();
+        Double salario = this.getGerenciaRN().getGerenciaVO().getSalario();
+        if (cod <= -1 || nome == null || nome.equals("") || salario <= 0.0) {
+            return false;
+        }
         String sql;
         Connection con = new Conexao().getConnection();
         try (Statement stm = con.createStatement()) {
@@ -41,31 +46,35 @@ public class GerenciaPERS {
         return false;
     }
 
-    public void salvar() {
+    public boolean salvar() {
         int cod = this.getGerenciaRN().getGerenciaVO().getCod();
         String nome = this.getGerenciaRN().getGerenciaVO().getNome();
         double salario = this.getGerenciaRN().getGerenciaVO().getSalario();
+        
+        //Validação
+        if (cod == -1 || nome == null || nome.trim().equals("")|| salario <= 0.0) {
+            return false;
+        }
+
         String sql;
         Connection con = new Conexao().getConnection();
         try (Statement stm = con.createStatement()) {
             if (cod == 0) {
                 sql = "insert into gerencia(gerencianome, gerenciaadicionalsalario)" + "values('" + nome + "'," + salario + ") RETURNING gerenciacodigo";
-                ResultSet rs =  stm.executeQuery(sql);
+                ResultSet rs = stm.executeQuery(sql);
                 rs.next();
                 int resultado = rs.getInt(1);
                 this.getGerenciaRN().getGerenciaVO().setCod(resultado);
             } else {
                 sql = "update gerencia set gerencianome = '" + nome + "', gerenciaadicionalsalario = " + salario + " where gerenciacodigo = " + cod + "";
                 stm.executeUpdate(sql);
+
             }
-           
-            
-           
-             
+            return true;
         } catch (SQLException ex) {
             System.out.println("Erro.");
         }
-
+        return false;
     }
 
     public ArrayList<GerenciaVO> carregarTabela(String nome) {

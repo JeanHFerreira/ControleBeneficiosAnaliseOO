@@ -41,7 +41,6 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
         this.setSize(400, 200);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
         
-        
         lblCodGerencia.setText(""+gerenciaVO.getCod());
         txtNomeGerencia.setText(gerenciaVO.getNome());
         txtSalarioAdicional.setText(""+gerenciaVO.getSalario());
