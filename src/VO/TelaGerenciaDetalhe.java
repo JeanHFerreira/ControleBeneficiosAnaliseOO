@@ -66,30 +66,31 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
         btExcluir = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Dados de uma gerencia");
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel1.setText("Cod");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(70, 27, 22, 20);
+        jLabel1.setBounds(70, 27, 23, 20);
 
         jLabel2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel2.setText("Nome");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(60, 54, 34, 15);
+        jLabel2.setBounds(60, 54, 34, 16);
 
         jLabel3.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         jLabel3.setText("Salári Adicional");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(10, 86, 82, 15);
+        jLabel3.setBounds(10, 86, 85, 16);
 
         lblCodGerencia.setBackground(new java.awt.Color(255, 255, 255));
         lblCodGerencia.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         lblCodGerencia.setForeground(new java.awt.Color(51, 51, 51));
         lblCodGerencia.setText("-");
         getContentPane().add(lblCodGerencia);
-        lblCodGerencia.setBounds(100, 30, 70, 15);
+        lblCodGerencia.setBounds(100, 30, 70, 16);
 
         txtNomeGerencia.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         txtNomeGerencia.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +99,7 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNomeGerencia);
-        txtNomeGerencia.setBounds(100, 50, 250, 27);
+        txtNomeGerencia.setBounds(100, 50, 250, 22);
 
         txtSalarioAdicional.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         txtSalarioAdicional.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +108,7 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSalarioAdicional);
-        txtSalarioAdicional.setBounds(100, 80, 250, 27);
+        txtSalarioAdicional.setBounds(100, 80, 250, 22);
 
         btSalvarEditar.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         btSalvarEditar.setText("Quaquer coisa");
@@ -117,7 +118,7 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btSalvarEditar);
-        btSalvarEditar.setBounds(140, 120, 108, 27);
+        btSalvarEditar.setBounds(140, 120, 113, 25);
 
         btExcluir.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         btExcluir.setText("Excluir");
@@ -127,7 +128,7 @@ public class TelaGerenciaDetalhe extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(256, 120, 90, 27);
+        btExcluir.setBounds(256, 120, 90, 25);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_gerenciaDetalhe.png"))); // NOI18N
         getContentPane().add(jLabel4);

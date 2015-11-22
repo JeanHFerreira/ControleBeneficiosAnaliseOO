@@ -50,13 +50,16 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         btExcluir = new javax.swing.JButton();
         btSalvarEditar = new javax.swing.JButton();
         btDependente = new javax.swing.JButton();
+        lbGerencia = new javax.swing.JLabel();
+        cbGerencia = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Dados de um funcionário");
         getContentPane().setLayout(null);
 
         lbSalario.setText("Salário");
         getContentPane().add(lbSalario);
-        lbSalario.setBounds(10, 140, 34, 14);
+        lbSalario.setBounds(10, 180, 34, 14);
 
         lbNome.setText("Nome");
         getContentPane().add(lbNome);
@@ -66,7 +69,7 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         getContentPane().add(lbCpf);
         lbCpf.setBounds(10, 80, 19, 14);
         getContentPane().add(txtSalario);
-        txtSalario.setBounds(60, 140, 230, 20);
+        txtSalario.setBounds(60, 170, 230, 20);
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,11 +105,11 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
 
         btExcluir.setText("Excluir");
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(283, 260, 90, 23);
+        btExcluir.setBounds(310, 260, 90, 23);
 
         btSalvarEditar.setText("Qualquer coisa");
         getContentPane().add(btSalvarEditar);
-        btSalvarEditar.setBounds(173, 260, 100, 23);
+        btSalvarEditar.setBounds(173, 260, 120, 23);
 
         btDependente.setText("Dependentes");
         btDependente.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +119,14 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         });
         getContentPane().add(btDependente);
         btDependente.setBounds(10, 260, 120, 23);
+
+        lbGerencia.setText("Gerencia");
+        getContentPane().add(lbGerencia);
+        lbGerencia.setBounds(0, 140, 50, 14);
+
+        cbGerencia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cbGerencia);
+        cbGerencia.setBounds(60, 140, 230, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -179,8 +190,10 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btSalvarEditar;
     private javax.swing.JComboBox cbCargo;
+    private javax.swing.JComboBox cbGerencia;
     private javax.swing.JLabel lbCargo;
     private javax.swing.JLabel lbCpf;
+    private javax.swing.JLabel lbGerencia;
     private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lbSalario;
     private javax.swing.JLabel txtCodigo;

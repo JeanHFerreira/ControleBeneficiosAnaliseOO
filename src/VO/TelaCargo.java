@@ -43,7 +43,8 @@ public class TelaCargo extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cargo");
         getContentPane().setLayout(null);
 
         txtBusca.addActionListener(new java.awt.event.ActionListener() {
@@ -52,7 +53,7 @@ public class TelaCargo extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtBusca);
-        txtBusca.setBounds(40, 5, 340, 28);
+        txtBusca.setBounds(40, 5, 340, 20);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bt_lupa_buscar.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -84,11 +85,11 @@ public class TelaCargo extends javax.swing.JFrame {
 
         jButton2.setText("Modificar");
         getContentPane().add(jButton2);
-        jButton2.setBounds(200, 260, 130, 28);
+        jButton2.setBounds(200, 260, 130, 23);
 
         jButton3.setText("Incluir");
         getContentPane().add(jButton3);
-        jButton3.setBounds(333, 260, 100, 28);
+        jButton3.setBounds(333, 260, 100, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VO/imgs/bg_telaBusca.png"))); // NOI18N
         getContentPane().add(jLabel1);
