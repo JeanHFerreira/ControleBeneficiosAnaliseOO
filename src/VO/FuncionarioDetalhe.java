@@ -12,7 +12,10 @@ import java.util.ArrayList;
  * @author Eric
  */
 public class FuncionarioDetalhe extends javax.swing.JFrame {
-
+    
+    private ArrayList <CargoVO> listaCargo;
+    private ArrayList <GerenciaVO> listaGerencia;
+            
     public FuncionarioDetalhe() {
         initComponents();
         this.setSize(486, 330);
@@ -31,15 +34,15 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
     public void setarCombo(FuncionarioVO funcionarioVO) {
         FuncionarioRN funcionarioRN = new FuncionarioRN(funcionarioVO);
         FuncionarioPERS funcionarioPERS = new FuncionarioPERS(funcionarioRN);
-        ArrayList <CargoVO> listaCargo = funcionarioPERS.BuscarComboCargo();
-        ArrayList <GerenciaVO> listaGerencia = funcionarioPERS.BuscarComboGerencia();
+        this.listaCargo = funcionarioPERS.BuscarComboCargo();
+        this.listaGerencia = funcionarioPERS.BuscarComboGerencia();
         
-        for(int i = 0; i<listaCargo.size(); i++){
-            this.cbCargo.addItem(listaCargo.get(i));
+        for(int i = 0; i<this.listaCargo.size(); i++){
+            this.cbCargo.addItem(this.listaCargo.get(i).getNome());
         }
         
-        for(int i = 0; i<listaGerencia.size(); i++){
-            this.cbGerencia.addItem(listaGerencia.get(i));
+        for(int i = 0; i<this.listaGerencia.size(); i++){
+            this.cbGerencia.addItem(this.listaGerencia.get(i).getNome());
         }
         
         if (funcionarioVO != null) {

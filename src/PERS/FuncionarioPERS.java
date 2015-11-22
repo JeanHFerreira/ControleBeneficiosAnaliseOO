@@ -64,7 +64,7 @@ public class FuncionarioPERS {
     public ArrayList<CargoVO> BuscarComboCargo() {
         ArrayList <CargoVO> lista = new ArrayList<CargoVO>();
         Connection con = new Conexao().getConnection();
-        String sql = "select cargocodigo, cargonome  from cargos";
+        String sql = "select cargocodigo, cargonome from cargos";
         Statement stm = null;
         ResultSet rs = null;
         try {
