@@ -29,7 +29,22 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         this.setSize(420, 550);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
         this.btDependente.setEnabled(true);
-        
+        this.txtCodigo.setText(""+funcionarioVO.getCod());
+        this.txtCpf.setText(funcionarioVO.getCpf());
+        this.txtDataNasc.setText(funcionarioVO.getDataNasc());
+        this.txtLogin.setText(funcionarioVO.getLogin());
+        this.txtNome.setText(funcionarioVO.getNome());
+        this.txtRG.setText(funcionarioVO.getRg());
+        this.txtSenha.setText(funcionarioVO.getSenha());
+        if(funcionarioVO.getSexo().equals("M")){
+            this.rbMasculino.setSelected(true);
+        }else{
+            this.rbFeminino.setSelected(true);
+        }
+        if(funcionarioVO.getNivel()!=0){
+            this.cbNivel.setSelectedIndex(funcionarioVO.getNivel()-1);
+        }
+
     }
 
     public void setarCombo(FuncionarioVO funcionarioVO) {
@@ -57,12 +72,12 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         }
         this.cbGerencia.setSelectedIndex(index);
     }
-    
-    public GerenciaVO pegarIdGerencia(String obj){
+
+    public GerenciaVO pegarIdGerencia(String obj) {
         return null;
     }
-    
-    public CargoVO pegarIdCargo(String obj){
+
+    public CargoVO pegarIdCargo(String obj) {
         return null;
     }
 
@@ -264,7 +279,7 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
             funcionarioVO.setCod(codigo);
             funcionarioVO.setCpf(this.txtCpf.getText());
             funcionarioVO.setCargoVO(null);
-            funcionarioVO.setGerenciaVO(this.pegarIdGerencia((String)this.cbGerencia.getSelectedItem()));
+            funcionarioVO.setGerenciaVO(this.pegarIdGerencia((String) this.cbGerencia.getSelectedItem()));
             funcionarioVO.setNome(this.txtNome.getText());
             FuncionarioRN funcionarioRN = new FuncionarioRN(funcionarioVO);
             FuncionarioPERS funcionarioPERS = new FuncionarioPERS(funcionarioRN);
