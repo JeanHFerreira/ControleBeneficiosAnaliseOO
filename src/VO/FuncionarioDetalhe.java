@@ -16,7 +16,7 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
         this.btDependente.setEnabled(false);
     }
-    
+
     public FuncionarioDetalhe(FuncionarioVO funcionarioVO) {
         initComponents();
         this.setSize(486, 330);
@@ -24,15 +24,15 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         this.btDependente.setEnabled(true);
         //Setar campos com os dados do funcionarioVO -- funcionarioVO.get...
     }
-    
-    public void setarCombo(FuncionarioVO funcionarioVO){
+
+    public void setarCombo(FuncionarioVO funcionarioVO) {
         //Busca todos os cargos
-        
-        if(funcionarioVO != null){
+
+        if (funcionarioVO != null) {
             //this.cbCargo.setSelectedIndex();//setar indice do combo
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -59,17 +59,17 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
 
         lbSalario.setText("Salário");
         getContentPane().add(lbSalario);
-        lbSalario.setBounds(10, 180, 34, 14);
+        lbSalario.setBounds(20, 180, 34, 14);
 
         lbNome.setText("Nome");
         getContentPane().add(lbNome);
-        lbNome.setBounds(10, 50, 27, 14);
+        lbNome.setBounds(20, 50, 27, 14);
 
         lbCpf.setText("CPF");
         getContentPane().add(lbCpf);
-        lbCpf.setBounds(10, 80, 19, 14);
+        lbCpf.setBounds(20, 80, 19, 14);
         getContentPane().add(txtSalario);
-        txtSalario.setBounds(60, 170, 230, 20);
+        txtSalario.setBounds(70, 170, 230, 20);
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,7 +77,7 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNome);
-        txtNome.setBounds(60, 50, 230, 20);
+        txtNome.setBounds(70, 50, 230, 20);
 
         txtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,29 +85,39 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtCpf);
-        txtCpf.setBounds(60, 80, 230, 20);
+        txtCpf.setBounds(70, 80, 230, 20);
 
         cbCargo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cbCargo);
-        cbCargo.setBounds(60, 110, 230, 20);
+        cbCargo.setBounds(70, 110, 230, 20);
 
         lbCargo.setText("Cargo");
         getContentPane().add(lbCargo);
-        lbCargo.setBounds(10, 110, 29, 14);
+        lbCargo.setBounds(20, 110, 29, 14);
 
         blCodigo.setText("Código");
         getContentPane().add(blCodigo);
-        blCodigo.setBounds(10, 20, 33, 14);
+        blCodigo.setBounds(20, 20, 33, 14);
 
         txtCodigo.setText("-");
         getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(60, 20, 230, 14);
+        txtCodigo.setBounds(70, 20, 230, 14);
 
         btExcluir.setText("Excluir");
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
         getContentPane().add(btExcluir);
         btExcluir.setBounds(310, 260, 90, 23);
 
         btSalvarEditar.setText("Qualquer coisa");
+        btSalvarEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvarEditarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btSalvarEditar);
         btSalvarEditar.setBounds(173, 260, 120, 23);
 
@@ -122,11 +132,11 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
 
         lbGerencia.setText("Gerencia");
         getContentPane().add(lbGerencia);
-        lbGerencia.setBounds(0, 140, 50, 14);
+        lbGerencia.setBounds(10, 140, 50, 14);
 
         cbGerencia.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(cbGerencia);
-        cbGerencia.setBounds(60, 140, 230, 20);
+        cbGerencia.setBounds(70, 140, 230, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -148,6 +158,20 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
             telaDependente.setVisible(true);
         }
     }//GEN-LAST:event_btDependenteActionPerformed
+
+    private void btSalvarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarEditarActionPerformed
+        if (btSalvarEditar.getText().equals("Editar")) {
+
+        } else {
+            if (btSalvarEditar.getText().equals("Salvar")) {
+
+            }
+        }
+    }//GEN-LAST:event_btSalvarEditarActionPerformed
+
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        
+    }//GEN-LAST:event_btExcluirActionPerformed
 
     /**
      * @param args the command line arguments
