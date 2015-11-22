@@ -28,7 +28,7 @@ public class FuncionarioPERS {
         ArrayList<FuncionarioVO> lista = new ArrayList<FuncionarioVO>();
 
         Connection con = new Conexao().getConnection();
-        String sql = "select funcionariocodigo, funcionarionome, funcionariocpf from funcionario where funcionarionomegerencianome LIKE '%" + nome + "%'";
+        String sql = "select funcionariocodigo, funcionarionome, funcionariocpf from funcionario where funcionarionome LIKE '%" + nome + "%'";
         Statement stm = null;
         try {
             stm = con.createStatement();
