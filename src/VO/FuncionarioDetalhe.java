@@ -22,6 +22,7 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         this.setSize(420, 550);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
         this.btDependente.setEnabled(false);
+        this.btSalvarEditar.setText("Salvar");
     }
 
     public FuncionarioDetalhe(FuncionarioVO funcionarioVO) {
@@ -36,6 +37,7 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         this.txtNome.setText(funcionarioVO.getNome());
         this.txtRG.setText(funcionarioVO.getRg());
         this.txtSenha.setText(funcionarioVO.getSenha());
+        this.btSalvarEditar.setText("Salvar");
         if(funcionarioVO.getSexo().equals("M")){
             this.rbMasculino.setSelected(true);
         }else{
