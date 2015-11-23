@@ -80,6 +80,10 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
     public CargoVO pegarIdCargo(String obj) {
         return null;
     }
+    
+    public String pegarSexo() {
+        return (this.rbMasculino.isSelected())?"M":"S";
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -114,6 +118,8 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         txtLogin = new javax.swing.JTextField();
         cbNivel = new javax.swing.JComboBox();
         txtSenha = new javax.swing.JTextField();
+        txtEndereco = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Dados de um funcionário");
@@ -247,6 +253,13 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         cbNivel.setBounds(150, 350, 250, 20);
         getContentPane().add(txtSenha);
         txtSenha.setBounds(150, 320, 250, 20);
+        getContentPane().add(txtEndereco);
+        txtEndereco.setBounds(150, 410, 250, 20);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("Endereço");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(40, 414, 90, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -278,9 +291,16 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
             }
             funcionarioVO.setCod(codigo);
             funcionarioVO.setCpf(this.txtCpf.getText());
-            funcionarioVO.setCargoVO(null);
+            funcionarioVO.setCargoVO(this.pegarIdCargo((String) this.cbGerencia.getSelectedItem()));
             funcionarioVO.setGerenciaVO(this.pegarIdGerencia((String) this.cbGerencia.getSelectedItem()));
             funcionarioVO.setNome(this.txtNome.getText());
+            funcionarioVO.setDataNasc(this.txtDataNasc.getText());
+            funcionarioVO.setLogin(this.txtLogin.getText());
+            funcionarioVO.setSexo(this.pegarSexo());
+            funcionarioVO.setEndereço(this.txtEndereco.getText());
+            funcionarioVO.setSenha(this.txtSenha.getText());
+            funcionarioVO.setNivel(this.cbNivel.getSelectedIndex()+1);
+            funcionarioVO.setRg(this.txtRG.getText());
             FuncionarioRN funcionarioRN = new FuncionarioRN(funcionarioVO);
             FuncionarioPERS funcionarioPERS = new FuncionarioPERS(funcionarioRN);
             if (funcionarioPERS.salvar()) {
@@ -349,6 +369,7 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
     private javax.swing.JComboBox cbGerencia;
     private javax.swing.JComboBox cbNivel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lbCargo;
@@ -365,6 +386,7 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
     private javax.swing.JLabel txtCodigo;
     private javax.swing.JTextField txtCpf;
     private javax.swing.JTextField txtDataNasc;
+    private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtRG;

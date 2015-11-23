@@ -70,7 +70,7 @@ public class FuncionarioPERS {
                 senha+","+
                 endereço+","+
                 cargoCodigo+","+
-                gerenciaCodigo+","+
+                gerenciaCodigo+
                  ") RETURNING funcionariocodigo";
                
                 System.out.println(sql);
