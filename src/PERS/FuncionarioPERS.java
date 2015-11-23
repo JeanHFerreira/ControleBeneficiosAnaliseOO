@@ -156,7 +156,7 @@ public class FuncionarioPERS {
             }
         } catch (SQLException ex) {
             System.out.println("Erro na sql tabela funcionario\nErro:" + ex.getMessage());
-            System.out.println("Erro ralação funcionario\nErro:" + ex.getMessage());
+            System.out.println("Erro relação funcionario\nErro:" + ex.getMessage());
         }
 
         return lista;
