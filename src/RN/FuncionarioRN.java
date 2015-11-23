@@ -23,6 +23,6 @@ public class FuncionarioRN {
     }
 
     public boolean validarCpf(String cpf) {
-       return true;
+       return false;
     }
 }

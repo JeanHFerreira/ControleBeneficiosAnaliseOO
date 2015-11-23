@@ -18,7 +18,7 @@ public class CargoVO {
     private String nome;
     private double salario_base;
 
-    CargoVO() {
+    public CargoVO() {
         this.cargoRN = null;
         this.cod = 0;
         this.nome = null;

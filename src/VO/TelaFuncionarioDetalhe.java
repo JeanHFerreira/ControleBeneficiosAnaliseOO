@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
  * @author Andressa
  * @author Eric
  */
-public class FuncionarioDetalhe extends javax.swing.JFrame {
+public class TelaFuncionarioDetalhe extends javax.swing.JFrame {
 
     private ArrayList<CargoVO> listaCargo;
     private ArrayList<GerenciaVO> listaGerencia;
 
-    public FuncionarioDetalhe() {
+    public TelaFuncionarioDetalhe() {
         initComponents();
         this.setSize(420, 550);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
@@ -25,7 +25,7 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         this.btSalvarEditar.setText("Salvar");
     }
 
-    public FuncionarioDetalhe(FuncionarioVO funcionarioVO) {
+    public TelaFuncionarioDetalhe(FuncionarioVO funcionarioVO) {
         initComponents();
         this.setSize(420, 550);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
@@ -85,11 +85,11 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
     }
 
     public CargoVO pegarIdCargo(String obj) {
-        System.out.println("OBJ:"+obj);
+        System.out.println("OBJ:" + obj);
         for (int i = 0; i < listaCargo.size(); i++) {
-            System.out.println("Nome:"+listaCargo.get(i).getNome());
+            System.out.println("Nome:" + listaCargo.get(i).getNome());
             if (listaCargo.get(i).getNome().equals(obj)) {
-                
+
                 return listaCargo.get(i);
             }
         }
@@ -292,20 +292,34 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
     private void btSalvarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarEditarActionPerformed
         if (btSalvarEditar.getText().equals("Editar")) {
             this.txtCodigo.setEnabled(true);
-            this.txtCpf.setEnabled(true);
             this.txtNome.setEnabled(true);
-            this.txtSalario.setEnabled(true);
+            this.txtRG.setEnabled(true);
+            this.txtCpf.setEnabled(true);
+            this.rbFeminino.setEnabled(true);
+            this.rbFeminino.setEnabled(true);
+            this.txtDataNasc.setEnabled(true);
             this.cbCargo.setEnabled(true);
             this.cbGerencia.setEnabled(true);
+            this.txtLogin.setEnabled(true);
+            this.txtSenha.setEnabled(true);
+            this.cbNivel.setEnabled(true);
+            this.txtEndereco.setEnabled(true);
             this.btSalvarEditar.setText("Salvar");
         } else {
             if (btSalvarEditar.getText().equals("Salvar")) {
                 this.txtCodigo.setEnabled(false);
-                this.txtCpf.setEnabled(false);
                 this.txtNome.setEnabled(false);
-                this.txtSalario.setEnabled(false);
+                this.txtRG.setEnabled(false);
+                this.txtCpf.setEnabled(false);
+                this.rbFeminino.setEnabled(false);
+                this.rbFeminino.setEnabled(false);
+                this.txtDataNasc.setEnabled(false);
                 this.cbCargo.setEnabled(false);
                 this.cbGerencia.setEnabled(false);
+                this.txtLogin.setEnabled(false);
+                this.txtSenha.setEnabled(false);
+                this.cbNivel.setEnabled(false);
+                this.txtEndereco.setEnabled(false);
                 FuncionarioVO funcionarioVO = new FuncionarioVO();
                 int codigo;
                 if (txtCodigo.getText().equals("-")) {
@@ -331,14 +345,22 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
                     this.lbCodigo.setText("" + funcionarioVO.getCod());
                     this.btDependente.setEnabled(true);
                     this.btSalvarEditar.setText("Editar");
+                    JOptionPane.showMessageDialog(this, "Salvo com sucesso", "Salvo!", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     this.txtCodigo.setEnabled(true);
-                    this.txtCpf.setEnabled(true);
                     this.txtNome.setEnabled(true);
-                    this.txtSalario.setEnabled(true);
+                    this.txtRG.setEnabled(true);
+                    this.txtCpf.setEnabled(true);
+                    this.rbFeminino.setEnabled(true);
+                    this.rbFeminino.setEnabled(true);
+                    this.txtDataNasc.setEnabled(true);
                     this.cbCargo.setEnabled(true);
                     this.cbGerencia.setEnabled(true);
-                    JOptionPane.showMessageDialog(this, null, "Erro ao salvar", JOptionPane.ERROR_MESSAGE);
+                    this.txtLogin.setEnabled(true);
+                    this.txtSenha.setEnabled(true);
+                    this.cbNivel.setEnabled(true);
+                    this.txtEndereco.setEnabled(true);
+                    JOptionPane.showMessageDialog(this, "Falha ao salvar", "Erro ao salvar", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -365,20 +387,21 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FuncionarioDetalhe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFuncionarioDetalhe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FuncionarioDetalhe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFuncionarioDetalhe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FuncionarioDetalhe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFuncionarioDetalhe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FuncionarioDetalhe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaFuncionarioDetalhe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FuncionarioDetalhe().setVisible(true);
+                new TelaFuncionarioDetalhe().setVisible(true);
             }
         });
     }

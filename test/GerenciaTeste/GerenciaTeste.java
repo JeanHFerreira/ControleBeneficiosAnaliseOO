@@ -10,73 +10,79 @@ import VO.GerenciaVO;
  * @author Jean_Henrique
  */
 public class GerenciaTeste {
-
+    
+    @Test
     public void gerenciaTeste() {
         GerenciaVO gerenciaVO = new GerenciaVO();
         GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
         GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
         
-        assertFalse(gerenciaPERS.excluir());
         assertFalse(gerenciaPERS.salvar());
-    }
-
-    @Test
-    public void gerenciaTeste1(){
-        GerenciaVO gerenciaVO = new GerenciaVO();
-        GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
-        GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
-        
-         gerenciaVO.setSalario(-2.0);
         assertFalse(gerenciaPERS.excluir());
-        assertFalse(gerenciaPERS.salvar());
     }
     
     @Test
-    public void gerenciaTeste2(){
+    public void gerenciaTeste1() {
         GerenciaVO gerenciaVO = new GerenciaVO();
         GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
         GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
-        
-         gerenciaVO.setSalario(-2.0);
-        assertFalse(gerenciaPERS.excluir());
+        gerenciaVO.setCod(0);
+        gerenciaVO.setNome("A");
+        gerenciaVO.setSalario(-2.0);
         assertFalse(gerenciaPERS.salvar());
+        assertFalse(gerenciaPERS.excluir());
     }
     
     @Test
-    public void gerenciaTeste3(){
+    public void gerenciaTeste2() {
         GerenciaVO gerenciaVO = new GerenciaVO();
         GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
         GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
-        
+        gerenciaVO.setCod(0);
+        gerenciaVO.setNome("A");
         gerenciaVO.setSalario(0.0);
-        assertFalse(gerenciaPERS.excluir());
         assertFalse(gerenciaPERS.salvar());
+        assertFalse(gerenciaPERS.excluir());
     }
     
     @Test
-    public void gerenciaTeste4(){
+    public void gerenciaTeste3() {
         GerenciaVO gerenciaVO = new GerenciaVO();
         GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
         GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
-        
+        gerenciaVO.setCod(-1);
+        gerenciaVO.setNome("A");
+        gerenciaVO.setSalario(1.0);
+        assertFalse(gerenciaPERS.salvar());
+        assertFalse(gerenciaPERS.excluir());
+    }
+    
+    @Test
+    public void gerenciaTeste4() {
+        GerenciaVO gerenciaVO = new GerenciaVO();
+        GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
+        GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
+        gerenciaVO.setCod(0);
+        gerenciaVO.setSalario(1.0);
         gerenciaVO.setNome(null);
-        assertFalse(gerenciaPERS.excluir());
         assertFalse(gerenciaPERS.salvar());
+        assertFalse(gerenciaPERS.excluir());
     }
     
     @Test
-    public void gerenciaTeste5(){
+    public void gerenciaTeste5() {
         GerenciaVO gerenciaVO = new GerenciaVO();
         GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
         GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
-        
+        gerenciaVO.setCod(0);
+        gerenciaVO.setSalario(1.0);
         gerenciaVO.setNome("");
-        assertFalse(gerenciaPERS.excluir());
         assertFalse(gerenciaPERS.salvar());
+        assertFalse(gerenciaPERS.excluir());
     }
     
     @Test
-    public void gerenciaTeste6(){
+    public void gerenciaTeste6() {
         GerenciaVO gerenciaVO = new GerenciaVO();
         GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
         GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
@@ -87,14 +93,15 @@ public class GerenciaTeste {
     }
     
     @Test
-    public void gerenciaTeste7(){
+    public void gerenciaTeste7() {
         GerenciaVO gerenciaVO = new GerenciaVO();
         GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);
         GerenciaPERS gerenciaPERS = new GerenciaPERS(gerenciaRN);
-        
-        gerenciaVO.setNome("NOME");
-        assertFalse(gerenciaPERS.excluir());
-        assertFalse(gerenciaPERS.salvar());
+        gerenciaVO.setCod(1);
+        gerenciaVO.setSalario(1.0);
+        gerenciaVO.setNome("A");
+        assertTrue(gerenciaPERS.salvar());
+        assertTrue(gerenciaPERS.excluir());
     }
-
+    
 }

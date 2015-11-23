@@ -40,10 +40,10 @@ public class FuncionarioPERS {
         String endereço = this.getFuncionarioRN().getFuncionarioVO().getEndereço();
 
         //Validação
-        /*if (cod == -1 || nome == null || nome.trim().equals("")
+        if (cod == -1 || nome == null || nome.trim().equals("")
                 || cpf.trim().equals("") || this.getFuncionarioRN().validarCpf(cpf)) {
             return false;
-        }*/
+        }
 
         String sql;
         Connection con = new Conexao().getConnection();

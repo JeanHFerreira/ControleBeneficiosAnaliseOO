@@ -24,8 +24,10 @@ public class GerenciaVO {
         this.salario = salario;
     }
 
-    GerenciaVO() {
-        
+    public GerenciaVO() {
+        this.cod = -1;
+        this.nome = null;
+        this.salario = 0.0;
     }
 
     public int getCod() {

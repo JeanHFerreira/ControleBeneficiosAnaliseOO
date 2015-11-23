@@ -122,7 +122,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
             gerenciaVO.setNome(tabela.getValueAt(tabela.getSelectedRow(), 11).toString());
             funcionarioVO.setCargoVO(cargoVO);
             funcionarioVO.setGerenciaVO(gerenciaVO);
-            FuncionarioDetalhe telaFuncDetalhe = new FuncionarioDetalhe(funcionarioVO);
+            TelaFuncionarioDetalhe telaFuncDetalhe = new TelaFuncionarioDetalhe(funcionarioVO);
             telaFuncDetalhe.setarCombo(funcionarioVO);
             telaFuncDetalhe.setVisible(true);
         } else {
@@ -136,7 +136,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
 
     private void btIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIncluirActionPerformed
-        FuncionarioDetalhe telaFuncDetalhe = new FuncionarioDetalhe();
+        TelaFuncionarioDetalhe telaFuncDetalhe = new TelaFuncionarioDetalhe();
         telaFuncDetalhe.setarCombo(null);
         telaFuncDetalhe.setVisible(true);
     }//GEN-LAST:event_btIncluirActionPerformed
