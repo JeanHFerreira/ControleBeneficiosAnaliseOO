@@ -72,7 +72,7 @@ public class FuncionarioPERS {
         try (Statement stm = con.createStatement()) {
             if (cod == 0) {
                 sql = "insert into funcionario(";
-                sql += "funcionariocodigo,"
+                sql += ""
                         + "funcionarionome, "
                         + "funcionariosexo, "
                         + "funcionariorg, "
@@ -84,7 +84,7 @@ public class FuncionarioPERS {
                         + "funcionarioendereco,"
                         + "cargocodigo,"
                         + "gerenciacodigo) values(";
-                sql += "" + cod + ","
+                sql += ""
                         + "'" + nome + "',"
                         + "'" + sexo + "',"
                         + "'" + rg + "',"
