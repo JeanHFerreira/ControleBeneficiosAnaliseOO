@@ -4,7 +4,7 @@ import PERS.DependentePERS;
 import RN.DependenteRN;
 import VO.DependenteVO;
 import VO.FuncionarioVO;
-
+import junit.framework.*;
 /**
  * @author Eric
  * @author Andressa
@@ -13,7 +13,7 @@ import VO.FuncionarioVO;
 public class DependenteTeste extends TestCase{
 
     @Test
-    public dependenteTeste1() {
+    public void dependenteTeste1() {
         DependenteVO dependenteVO= new DependenteVO();
         DependenteRN dependenteRN = new DependenteRN(dependenteVO);
         DependentePERS dependentePERS = new DependentePERS(dependenteRN);
@@ -23,7 +23,7 @@ public class DependenteTeste extends TestCase{
     }
 
     @Test
-    public dependenteTeste2() {
+    public void dependenteTeste2() {
         DependenteVO dependenteVO= new DependenteVO();
         DependenteRN dependenteRN = new DependenteRN(dependenteVO);
         DependentePERS dependentePERS = new DependentePERS(dependenteRN);
@@ -39,7 +39,7 @@ public class DependenteTeste extends TestCase{
     }
 
     @Test
-    public dependenteTeste3() {
+    public void dependenteTeste3() {
         DependenteVO dependenteVO= new DependenteVO();
         DependenteRN dependenteRN = new DependenteRN(dependenteVO);
         DependentePERS dependentePERS = new DependentePERS(dependenteRN);
@@ -55,7 +55,7 @@ public class DependenteTeste extends TestCase{
     }
 
     @Test
-    public dependenteTeste4() {
+    public void dependenteTeste4() {
         DependenteVO dependenteVO= new DependenteVO();
         DependenteRN dependenteRN = new DependenteRN(dependenteVO);
         DependentePERS dependentePERS = new DependentePERS(dependenteRN);
@@ -71,7 +71,7 @@ public class DependenteTeste extends TestCase{
     }
 
     @Test
-    public dependenteTeste5() {
+    public void dependenteTeste5() {
         DependenteVO dependenteVO= new DependenteVO();
         DependenteRN dependenteRN = new DependenteRN(dependenteVO);
         DependentePERS dependentePERS = new DependentePERS(dependenteRN);
@@ -87,7 +87,7 @@ public class DependenteTeste extends TestCase{
     }
 
     @Test
-    public dependenteTeste6() {
+    public void dependenteTeste6() {
         DependenteVO dependenteVO= new DependenteVO();
         DependenteRN dependenteRN = new DependenteRN(dependenteVO);
         DependentePERS dependentePERS = new DependentePERS(dependenteRN);
@@ -103,7 +103,7 @@ public class DependenteTeste extends TestCase{
     }
 
     @Test
-    public dependenteTeste7() {
+    public void dependenteTeste7() {
         DependenteVO dependenteVO= new DependenteVO();
         DependenteRN dependenteRN = new DependenteRN(dependenteVO);
         DependentePERS dependentePERS = new DependentePERS(dependenteRN);
@@ -119,7 +119,7 @@ public class DependenteTeste extends TestCase{
     }
 
     @Test
-    public dependenteTeste8() {
+    public void dependenteTeste8() {
         DependenteVO dependenteVO= new DependenteVO();
         DependenteRN dependenteRN = new DependenteRN(dependenteVO);
         DependentePERS dependentePERS = new DependentePERS(dependenteRN);
@@ -135,7 +135,7 @@ public class DependenteTeste extends TestCase{
     }
 
     @Test
-    public dependenteTeste9() {
+    public void dependenteTeste9() {
         DependenteVO dependenteVO= new DependenteVO();
         DependenteRN dependenteRN = new DependenteRN(dependenteVO);
         DependentePERS dependentePERS = new DependentePERS(dependenteRN);
@@ -151,7 +151,7 @@ public class DependenteTeste extends TestCase{
     }
     
     @Test
-    public dependenteTeste10() {
+    public void dependenteTeste10() {
         DependenteVO dependenteVO= new DependenteVO();
         DependenteRN dependenteRN = new DependenteRN(dependenteVO);
         DependentePERS dependentePERS = new DependentePERS(dependenteRN);
@@ -167,7 +167,7 @@ public class DependenteTeste extends TestCase{
     }
     
     @Test
-    public dependenteTeste11() {
+    public void dependenteTeste11() {
         DependenteVO dependenteVO= new DependenteVO();
         DependenteRN dependenteRN = new DependenteRN(dependenteVO);
         DependentePERS dependentePERS = new DependentePERS(dependenteRN);
@@ -183,7 +183,7 @@ public class DependenteTeste extends TestCase{
     }
     
     @Test
-    public dependenteTeste12() {
+    public void dependenteTeste12() {
         DependenteVO dependenteVO= new DependenteVO();
         DependenteRN dependenteRN = new DependenteRN(dependenteVO);
         DependentePERS dependentePERS = new DependentePERS(dependenteRN);
@@ -198,8 +198,8 @@ public class DependenteTeste extends TestCase{
         assertFalse(dependentePERS.excluir());
     }
     
-        @Test
-    public dependenteTeste13() {
+    @Test
+    public void dependenteTeste13() {
         DependenteVO dependenteVO= new DependenteVO();
         DependenteRN dependenteRN = new DependenteRN(dependenteVO);
         DependentePERS dependentePERS = new DependentePERS(dependenteRN);

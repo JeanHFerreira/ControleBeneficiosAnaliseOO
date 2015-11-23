@@ -3,7 +3,7 @@ package CargoTeste;
 import PERS.CargoPERS;
 import RN.CargoRN;
 import VO.CargoVO;
-
+import junit.framework.*;
 /**
  * @author Jean
  * @author Ericson
@@ -12,7 +12,7 @@ import VO.CargoVO;
 public class CargoTeste extends TestCase{
 
     @Test
-    public cargoTeste1() {
+    public void cargoTeste1() {
         CargoVO cargoVO = new CargoVO();
         CargoRN cargoRN = new CargoRN(cargoVO);
         CargoPERS cargoPERS = new CargoPERS(cargoRN);
@@ -22,7 +22,7 @@ public class CargoTeste extends TestCase{
     }
     
     @Test
-    public cargoTeste2() {
+    public void cargoTeste2() {
         CargoVO cargoVO = new CargoVO();
         CargoRN cargoRN = new CargoRN(cargoVO);
         CargoPERS cargoPERS = new CargoPERS(cargoRN);
@@ -34,7 +34,7 @@ public class CargoTeste extends TestCase{
     }
     
     @Test
-    public cargoTeste3() {
+    public void cargoTeste3() {
         CargoVO cargoVO = new CargoVO();
         CargoRN cargoRN = new CargoRN(cargoVO);
         CargoPERS cargoPERS = new CargoPERS(cargoRN);
@@ -46,7 +46,7 @@ public class CargoTeste extends TestCase{
     }
     
     @Test
-    public cargoTeste4() {
+    public void cargoTeste4() {
         CargoVO cargoVO = new CargoVO();
         CargoRN cargoRN = new CargoRN(cargoVO);
         CargoPERS cargoPERS = new CargoPERS(cargoRN);
@@ -58,7 +58,7 @@ public class CargoTeste extends TestCase{
     }
     
     @Test
-    public cargoTeste5() {
+    public void cargoTeste5() {
         CargoVO cargoVO = new CargoVO();
         CargoRN cargoRN = new CargoRN(cargoVO);
         CargoPERS cargoPERS = new CargoPERS(cargoRN);
@@ -70,7 +70,7 @@ public class CargoTeste extends TestCase{
     }
     
     @Test
-    public cargoTeste6() {
+    public void cargoTeste6() {
         CargoVO cargoVO = new CargoVO();
         CargoRN cargoRN = new CargoRN(cargoVO);
         CargoPERS cargoPERS = new CargoPERS(cargoRN);
@@ -82,7 +82,7 @@ public class CargoTeste extends TestCase{
     }
     
     @Test
-    public cargoTeste7() {
+    public void cargoTeste7() {
         CargoVO cargoVO = new CargoVO();
         CargoRN cargoRN = new CargoRN(cargoVO);
         CargoPERS cargoPERS = new CargoPERS(cargoRN);
