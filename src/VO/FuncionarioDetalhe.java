@@ -316,7 +316,9 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
                 funcionarioVO.setCpf(this.txtCpf.getText());
                 funcionarioVO.setSexo(this.pegarSexo());
                 funcionarioVO.setDataNasc(this.txtDataNasc.getText());
+                System.out.println((String) this.cbGerencia.getSelectedItem());
                 funcionarioVO.setCargoVO(this.pegarIdCargo((String) this.cbGerencia.getSelectedItem()));
+                System.out.println((String) this.cbCargo.getSelectedItem());
                 funcionarioVO.setGerenciaVO(this.pegarIdGerencia((String) this.cbGerencia.getSelectedItem()));
                 funcionarioVO.setLogin(this.txtLogin.getText());
                 funcionarioVO.setSenha(this.txtSenha.getText());
