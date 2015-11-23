@@ -48,31 +48,32 @@ public class FuncionarioPERS {
         try (Statement stm = con.createStatement()) {
             if (cod == 0) {
                 sql = "insert into funcionario(";
-                sql+="funcionariocodigo,"
-                + "funcionarionome, "
-                + "funcionariosexo, "
-                + "funcionariorg, "
-                + "funcionariocpf,"
-                + "funcionariodatanascimento,"
-                + "funcionarionivel,"
-                + "funcionariologin,"
-                + "funcionariosenha,"
-                + "funcionarioendereco,"
-                + "cargocodigo,"
-                + "gerenciacodigo) values(";
-                sql+= ""+cod+","+
-                nome+","+
-                sexo+","+
-                rg+","+
-                dataNasc+","+
-                nivel+","+
-                login+","+
-                senha+","+
-                endereço+","+
-                cargoCodigo+","+
-                gerenciaCodigo+
-                 ") RETURNING funcionariocodigo";
-               
+                sql += "funcionariocodigo,"
+                        + "funcionarionome, "
+                        + "funcionariosexo, "
+                        + "funcionariorg, "
+                        + "funcionariocpf,"
+                        + "funcionariodatanascimento,"
+                        + "funcionarionivel,"
+                        + "funcionariologin,"
+                        + "funcionariosenha,"
+                        + "funcionarioendereco,"
+                        + "cargocodigo,"
+                        + "gerenciacodigo) values(";
+                sql += "" + cod + ","
+                        + nome + ","
+                        + sexo + ","
+                        + rg + ","
+                        + cpf + ","
+                        + dataNasc + ","
+                        + nivel + ","
+                        + login + ","
+                        + senha + ","
+                        + endereço + ","
+                        + cargoCodigo + ","
+                        + gerenciaCodigo
+                        + ") RETURNING funcionariocodigo";
+
                 System.out.println(sql);
                 ResultSet rs = stm.executeQuery(sql);
                 rs.next();
@@ -80,10 +81,17 @@ public class FuncionarioPERS {
                 this.getFuncionarioRN().getFuncionarioVO().setCod(resultado);
             } else {
                 sql = "update funcionario "
-                        + "set funcionarionome = '" + nome + "', "
-                        + "funcionariocpf = " + cpf + "', "
-                        + "cargocodigo = " + cargoCodigo + "', "
-                        + "gerenciacodigo = " + gerenciaCodigo + "', "
+                        + "set funcionarionome = "+ nome +","
+                        + "funcionariosexo"+ sexo +","
+                        + "funcionariorg"+ rg +","
+                        + "funcionariocpf"+ cpf +","
+                        + "funcionariodatanascimento"+dataNasc +","
+                        + "funcionarionivel"+ nivel +","
+                        + "funcionariologin"+ login +","
+                        + "funcionariosenha"+ senha +","
+                        + "funcionarioendereco"+ endereço +","
+                        + "cargocodigo"+ cargoCodigo +","
+                        + "gerenciacodigo"+ gerenciaCodigo
                         + " where gerenciacodigo = " + cod + "";
                 stm.executeUpdate(sql);
             }
@@ -97,7 +105,6 @@ public class FuncionarioPERS {
     public ArrayList<FuncionarioVO> carregarTabela(String nome) {
         ArrayList<FuncionarioVO> lista = new ArrayList<>();
 
-        
         String sql = "select funcionario.funcionariocodigo,"
                 + "funcionario.funcionarionome, "
                 + "funcionario.funcionariosexo, "
