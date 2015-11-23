@@ -294,6 +294,7 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
             this.txtSalario.setEnabled(true);
             this.cbCargo.setEnabled(true);
             this.cbGerencia.setEnabled(true);
+            this.btSalvarEditar.setText("Salvar");
         } else {
             if (btSalvarEditar.getText().equals("Salvar")) {
                 this.txtCodigo.setEnabled(false);
@@ -326,6 +327,7 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
                 if (funcionarioPERS.salvar()) {
                     this.lbCodigo.setText("" + funcionarioVO.getCod());
                     this.btDependente.setEnabled(true);
+                    this.btSalvarEditar.setText("Editar");
                 } else {
                     JOptionPane.showMessageDialog(this, null, "Erro ao salvar", JOptionPane.ERROR_MESSAGE);
                 }
