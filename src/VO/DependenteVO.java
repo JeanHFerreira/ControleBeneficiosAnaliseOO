@@ -12,15 +12,20 @@ import RN.DependenteRN;
  * @author Eric
  */
 public class DependenteVO {
+
     private DependenteRN dependenteRN;
     private int cod;
     private String nome;
     private String sexo;
     private String cpf;
-    private int funcionario_codigo;
-    
-    DependenteVO() {
+    private FuncionarioVO funcionarioVO;
 
+    public DependenteVO() {
+        this.cod=-1;
+        this.nome=null;
+        this.sexo=null;
+        this.cpf=null;
+        this.funcionarioVO=null;
     }
 
     public DependenteVO(int cod, String nome, String sexo, String cpf) {
@@ -28,9 +33,8 @@ public class DependenteVO {
         this.nome = nome;
         this.sexo = sexo;
         this.cpf = cpf;
-        
-    }
 
+    }
 
     public DependenteRN getDependenteRN() {
         return dependenteRN;
@@ -73,11 +77,19 @@ public class DependenteVO {
     }
 
     public int getFuncionario_codigo() {
-        return funcionario_codigo;
+        return this.funcionarioVO.getCod();
     }
 
     public void setFuncionario_codigo(int funcionario_codigo) {
-        this.funcionario_codigo = funcionario_codigo;
+        this.funcionarioVO.setCod(funcionario_codigo);
+    }
+
+    public FuncionarioVO getFuncionarioVO() {
+        return this.funcionarioVO;
+    }
+
+    public void setFuncionarioVO(FuncionarioVO funcionarioVO) {
+        this.funcionarioVO = funcionarioVO;
     }
 
 }
