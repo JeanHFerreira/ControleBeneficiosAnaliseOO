@@ -85,8 +85,11 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
     }
 
     public CargoVO pegarIdCargo(String obj) {
+        System.out.println("OBJ:"+obj);
         for (int i = 0; i < listaCargo.size(); i++) {
+            System.out.println("Nome:"+listaCargo.get(i).getNome());
             if (listaCargo.get(i).getNome().equals(obj)) {
+                
                 return listaCargo.get(i);
             }
         }
@@ -316,10 +319,8 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
                 funcionarioVO.setCpf(this.txtCpf.getText());
                 funcionarioVO.setSexo(this.pegarSexo());
                 funcionarioVO.setDataNasc(this.txtDataNasc.getText());
-                System.out.println((String) this.cbGerencia.getSelectedItem());
-                funcionarioVO.setCargoVO(this.pegarIdCargo((String) this.cbGerencia.getSelectedItem()));
-                System.out.println((String) this.cbCargo.getSelectedItem());
                 funcionarioVO.setGerenciaVO(this.pegarIdGerencia((String) this.cbGerencia.getSelectedItem()));
+                funcionarioVO.setCargoVO(this.pegarIdCargo((String) this.cbCargo.getSelectedItem()));
                 funcionarioVO.setLogin(this.txtLogin.getText());
                 funcionarioVO.setSenha(this.txtSenha.getText());
                 funcionarioVO.setNivel(this.cbNivel.getSelectedIndex() + 1);

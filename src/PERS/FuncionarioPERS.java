@@ -27,8 +27,8 @@ public class FuncionarioPERS {
         int cod = this.getFuncionarioRN().getFuncionarioVO().getCod();
         String nome = this.getFuncionarioRN().getFuncionarioVO().getNome();
         String cpf = this.getFuncionarioRN().getFuncionarioVO().getCpf();
-        System.out.println(""+this.getFuncionarioRN().getFuncionarioVO().getCargoVO().getCod());
-        System.out.println(""+this.getFuncionarioRN().getFuncionarioVO().getGerenciaVO().getCod());
+        System.out.println("" + this.getFuncionarioRN().getFuncionarioVO().getCargoVO().getCod());
+        System.out.println("" + this.getFuncionarioRN().getFuncionarioVO().getGerenciaVO().getCod());
         int cargoCodigo = this.getFuncionarioRN().getFuncionarioVO().getCargoVO().getCod();
         int gerenciaCodigo = this.getFuncionarioRN().getFuncionarioVO().getGerenciaVO().getCod();
         String sexo = this.getFuncionarioRN().getFuncionarioVO().getSexo();
@@ -40,10 +40,10 @@ public class FuncionarioPERS {
         String endereço = this.getFuncionarioRN().getFuncionarioVO().getEndereço();
 
         //Validação
-        if (cod == -1 || nome == null || nome.trim().equals("")
+        /*if (cod == -1 || nome == null || nome.trim().equals("")
                 || cpf.trim().equals("") || this.getFuncionarioRN().validarCpf(cpf)) {
             return false;
-        }
+        }*/
 
         String sql;
         Connection con = new Conexao().getConnection();
@@ -63,15 +63,15 @@ public class FuncionarioPERS {
                         + "cargocodigo,"
                         + "gerenciacodigo) values(";
                 sql += "" + cod + ","
-                        + nome + ","
-                        + sexo + ","
-                        + rg + ","
-                        + cpf + ","
-                        + dataNasc + ","
+                        + "'" + nome + "',"
+                        + "'" + sexo + "',"
+                        + "'" + rg + "',"
+                        + "'" + cpf + "',"
+                        + "'" + dataNasc + "',"
                         + nivel + ","
-                        + login + ","
-                        + senha + ","
-                        + endereço + ","
+                        + "'" + login + "',"
+                        + "'" + senha + "',"
+                        + "'" + endereço + "',"
                         + cargoCodigo + ","
                         + gerenciaCodigo
                         + ") RETURNING funcionariocodigo";
@@ -83,17 +83,17 @@ public class FuncionarioPERS {
                 this.getFuncionarioRN().getFuncionarioVO().setCod(resultado);
             } else {
                 sql = "update funcionario "
-                        + "set funcionarionome = '"+ nome +"',"
-                        + "funcionariosexo = '"+ sexo +"',"
-                        + "funcionariorg = '"+ rg +"',"
-                        + "funcionariocpf = '"+ cpf +"',"
-                        + "funcionariodatanascimento = '"+dataNasc +"',"
-                        + "funcionarionivel = "+ nivel +","
-                        + "funcionariologin = '"+ login +"',"
-                        + "funcionariosenha = '"+ senha +"',"
-                        + "funcionarioendereco = '"+ endereço +"',"
-                        + "cargocodigo = "+ cargoCodigo +","
-                        + "gerenciacodigo = "+ gerenciaCodigo
+                        + "set funcionarionome = '" + nome + "',"
+                        + "funcionariosexo = '" + sexo + "',"
+                        + "funcionariorg = '" + rg + "',"
+                        + "funcionariocpf = '" + cpf + "',"
+                        + "funcionariodatanascimento = '" + dataNasc + "',"
+                        + "funcionarionivel = " + nivel + ","
+                        + "funcionariologin = '" + login + "',"
+                        + "funcionariosenha = '" + senha + "',"
+                        + "funcionarioendereco = '" + endereço + "',"
+                        + "cargocodigo = " + cargoCodigo + ","
+                        + "gerenciacodigo = " + gerenciaCodigo
                         + " where funcionariocodigo = " + cod + "";
                 System.out.println(sql);
                 stm.executeUpdate(sql);
