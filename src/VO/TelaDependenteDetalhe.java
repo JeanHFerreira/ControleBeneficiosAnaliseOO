@@ -18,6 +18,8 @@ public class TelaDependenteDetalhe extends javax.swing.JFrame {
     /**
      * Creates new form TelaDependenteDetalhe
      */
+    private FuncionarioVO funcionarioVO=null;
+    
     public void setBotaoModificador(String texto) {
         this.btSalvarEditar.setText(texto);
     }
@@ -42,14 +44,19 @@ public class TelaDependenteDetalhe extends javax.swing.JFrame {
         initComponents();
         this.setSize(400, 210);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
-
+        this.setFuncionarioVO(dependenteVO.getFuncionarioVO());
         lblCodDependente.setText("" + dependenteVO.getCod());
         txtNomeDependente.setText(dependenteVO.getNome());
         txtSexo.setSelectedItem(dependenteVO.getSexo());
         txtCPFDependente.setText(dependenteVO.getCpf());
 
     }
-
+    public TelaDependenteDetalhe(FuncionarioVO funcionarioVO) {
+        initComponents();
+        this.setSize(400, 210);
+        this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
+        this.setFuncionarioVO(funcionarioVO);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,7 +82,7 @@ public class TelaDependenteDetalhe extends javax.swing.JFrame {
 
         jLabel3.setText("jLabel3");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -116,7 +123,7 @@ public class TelaDependenteDetalhe extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(80, 140, 59, 28);
+        jButton1.setBounds(30, 140, 100, 28);
 
         btSalvarEditar.setText("Qualquer coisa");
         btSalvarEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +141,7 @@ public class TelaDependenteDetalhe extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(274, 140, 80, 28);
+        btExcluir.setBounds(274, 140, 90, 28);
         getContentPane().add(txtCPFDependente);
         txtCPFDependente.setBounds(110, 110, 250, 28);
 
@@ -146,7 +153,7 @@ public class TelaDependenteDetalhe extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btSalvarEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarEditarActionPerformed
@@ -161,9 +168,9 @@ public class TelaDependenteDetalhe extends javax.swing.JFrame {
             } else {
                 codigo = Integer.parseInt(lblCodDependente.getText());
             }
-
+            
             DependenteVO dependenteVO = new DependenteVO(codigo, this.txtNomeDependente.getText(), "" + this.txtSexo.getSelectedItem(), this.txtCPFDependente.getText());
-
+            dependenteVO.setFuncionarioVO(funcionarioVO);
             DependenteRN dependenteRN = new DependenteRN(dependenteVO);
             DependentePERS dependentePERS = new DependentePERS(dependenteRN);
             dependentePERS.salvar();
@@ -177,6 +184,7 @@ public class TelaDependenteDetalhe extends javax.swing.JFrame {
                 txtSexo.setEnabled(true);
                 txtCPFDependente.setEnabled(true);
                 this.btExcluir.setEnabled(false);
+                
             }
         }
 
@@ -256,4 +264,12 @@ public class TelaDependenteDetalhe extends javax.swing.JFrame {
     private javax.swing.JTextField txtNomeDependente;
     private javax.swing.JComboBox txtSexo;
     // End of variables declaration//GEN-END:variables
+
+    public FuncionarioVO getFuncionarioVO() {
+        return funcionarioVO;
+    }
+
+    public void setFuncionarioVO(FuncionarioVO funcionarioVO) {
+        this.funcionarioVO = funcionarioVO;
+    }
 }

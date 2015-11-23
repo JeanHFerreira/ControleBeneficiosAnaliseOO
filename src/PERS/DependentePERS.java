@@ -57,6 +57,8 @@ public class DependentePERS {
         String nome = this.getDependenteRN().getDependenteVO().getNome().trim();
         String sexo = this.getDependenteRN().getDependenteVO().getSexo().trim();
         String cpf = this.getDependenteRN().getDependenteVO().getCpf().trim();
+        System.out.println("AQUI");
+        int funcionario_codigo = this.getDependenteRN().getDependenteVO().getFuncionarioVO().getCod();
         //Validação
         if (cod == -1 || nome == null || nome.trim().equals("")) {
             return false;
@@ -66,14 +68,15 @@ public class DependentePERS {
         Connection con = new Conexao().getConnection();
         try (Statement stm = con.createStatement()) {
             if (cod == 0) {
-                sql = "insert into dependente(dependentenome, dependentesexo, dependentecpf)" + "values('" + nome + "','" + sexo + "','" + cpf + "') RETURNING dependentecodigo";
+                sql = "insert into dependente(dependentenome, dependentesexo, dependentecpf, funcionariocodigo)" + 
+                        "values('" + nome + "','" + sexo + "','" + cpf + "'," + funcionario_codigo + ") RETURNING dependentecodigo";
                 ResultSet rs = stm.executeQuery(sql);
                 rs.next();
                 int resultado = rs.getInt(1);
                 this.getDependenteRN().getDependenteVO().setCod(resultado);
             } else {
-                sql = "update dependente set dependenteNome  = '" + nome + "', dependenteSexo = '" + sexo + "', dependenteCPF  = '"+cpf+"' where dependenteCodigo = " + cod + "";
-                JOptionPane.showMessageDialog(null, nome+"  SEXo:"+sexo+"  CPF:"+cpf+"  Código:"+cod);
+                sql = "update dependente set dependenteNome  = '" + nome + "', dependenteSexo = '" + sexo + "', dependenteCPF  = '" + cpf + "' where dependenteCodigo = " + cod + "";
+                JOptionPane.showMessageDialog(null, nome + "  SEXo:" + sexo + "  CPF:" + cpf + "  Código:" + cod);
                 stm.executeUpdate(sql);
 
             }
@@ -88,7 +91,13 @@ public class DependentePERS {
         ArrayList<DependenteVO> lista = new ArrayList<DependenteVO>();
 
         Connection con = new Conexao().getConnection();
-        String sql = "select dependentecodigo, dependentenome, dependentesexo, dependentecpf from dependente where dependentenome LIKE '%" + nome + "%'";
+        String sql = "select dependentecodigo, "
+                + "dependentenome, "
+                + "dependentesexo, "
+                + "dependentecpf "
+                + "from dependente "
+                + "where funcionariocodigo = " + this.getDependenteRN().getDependenteVO().getFuncionarioVO().getCod()
+                + " and dependentenome LIKE '%" + nome + "%'";
         Statement stm = null;
         try {
             stm = con.createStatement();

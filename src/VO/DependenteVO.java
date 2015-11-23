@@ -19,13 +19,15 @@ public class DependenteVO {
     private String sexo;
     private String cpf;
     private FuncionarioVO funcionarioVO;
+    private int cod_funcionario;
 
     public DependenteVO() {
-        this.cod=-1;
-        this.nome=null;
-        this.sexo=null;
-        this.cpf=null;
-        this.funcionarioVO=null;
+        this.cod = -1;
+        this.nome = null;
+        this.sexo = null;
+        this.cpf = null;
+        this.funcionarioVO = null;
+        this.cod_funcionario = -1;
     }
 
     public DependenteVO(int cod, String nome, String sexo, String cpf) {
@@ -90,6 +92,14 @@ public class DependenteVO {
 
     public void setFuncionarioVO(FuncionarioVO funcionarioVO) {
         this.funcionarioVO = funcionarioVO;
+    }
+
+    public int getCod_funcionario() {
+        return cod_funcionario;
+    }
+
+    public void setCod_funcionario(int cod_funcionario) {
+        this.cod_funcionario = cod_funcionario;
     }
 
 }

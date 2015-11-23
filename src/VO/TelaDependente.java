@@ -14,7 +14,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Eric
  */
 public class TelaDependente extends javax.swing.JFrame {
-
+    
+    private FuncionarioVO funcionarioVO;
+    
     public TelaDependente() {
         initComponents();
         this.setSize(486, 330);
@@ -22,10 +24,22 @@ public class TelaDependente extends javax.swing.JFrame {
     }
 
     public void setarTabela(int codigoFuncionario) {
-        FuncionarioVO funcionarioVO = new FuncionarioVO();
-        funcionarioVO.setCod(codigoFuncionario);
-        FuncionarioRN funcionarioRN = new FuncionarioRN(funcionarioVO);
-        FuncionarioPERS funcionarioPES = new FuncionarioPERS(funcionarioRN);
+        FuncionarioVO funcionarioVO2 = new FuncionarioVO();
+        funcionarioVO2.setCod(codigoFuncionario);
+        this.funcionarioVO = funcionarioVO2;
+        System.out.println(this.funcionarioVO.getCod());
+        DependenteVO dependenteVO = new DependenteVO();
+        dependenteVO.setFuncionarioVO(this.funcionarioVO);
+        DependenteRN dependenteRN = new DependenteRN(dependenteVO);
+        DependentePERS dependentePERS = new DependentePERS(dependenteRN);
+
+        ArrayList<DependenteVO> lista = dependentePERS.carregarTabela("");
+        DefaultTableModel modelo = (DefaultTableModel) tabela.getModel();
+
+        modelo.setNumRows(0);
+        for (int i = 0; i < lista.size(); i++) {
+            modelo.addRow(new Object[]{lista.get(i).getCod(), lista.get(i).getNome(), lista.get(i).getSexo(), lista.get(i).getCpf()});
+        }
     }
 
     /**
@@ -114,7 +128,8 @@ public class TelaDependente extends javax.swing.JFrame {
 
     private void btIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIncluirActionPerformed
 
-      TelaDependenteDetalhe tela = new TelaDependenteDetalhe();
+        System.out.println(this.funcionarioVO.getCod());
+        TelaDependenteDetalhe tela = new TelaDependenteDetalhe(this.funcionarioVO);
         tela.setBotaoModificador("Salvar");
         tela.setBotaoExcluir(this.btIncluir.getText());
         tela.setVisible(true);
@@ -127,9 +142,9 @@ public class TelaDependente extends javax.swing.JFrame {
         modelo.setNumRows(0);
         DependenteVO dependenteVO = new DependenteVO();
         DependenteRN dependenteRN = new DependenteRN(dependenteVO);
-        DependentePERS cargoPERS = new DependentePERS(dependenteRN);
-
-        ArrayList<DependenteVO> lista = cargoPERS.carregarTabela(txtBusca.getText());
+        DependentePERS dependentePERS = new DependentePERS(dependenteRN);
+        dependenteVO.setFuncionarioVO(this.funcionarioVO);
+        ArrayList<DependenteVO> lista = dependentePERS.carregarTabela(txtBusca.getText());
 
         for (int i = 0; i < lista.size(); i++) {
             modelo.addRow(new Object[]{lista.get(i).getCod(), lista.get(i).getNome(), lista.get(i).getSexo(), lista.get(i).getCpf()});
@@ -144,7 +159,7 @@ public class TelaDependente extends javax.swing.JFrame {
             dependenteVO.setNome(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
             dependenteVO.setSexo(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
             dependenteVO.setCpf(tabela.getValueAt(tabela.getSelectedRow(), 3).toString());
-            
+            dependenteVO.setFuncionarioVO(funcionarioVO);
             TelaDependenteDetalhe tela = new TelaDependenteDetalhe(dependenteVO);
             tela.setBotaoModificador("Salvar");
             tela.setVisible(true);
