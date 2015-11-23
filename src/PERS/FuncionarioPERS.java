@@ -24,24 +24,23 @@ public class FuncionarioPERS {
     }
 
     public boolean excluir() {
-        /*int cod = this.getGerenciaRN().getGerenciaVO().getCod();
-        String nome = this.getGerenciaRN().getGerenciaVO().getNome().trim();
-        Double salario = this.getGerenciaRN().getGerenciaVO().getSalario();
-        if (cod <= -1 || nome == null || nome.equals("") || salario <= 0.0) {
+        int cod = this.getFuncionarioRN().getFuncionarioVO().getCod();
+        String nome = this.getFuncionarioRN().getFuncionarioVO().getNome().trim();
+        if (cod <= -1 || nome == null || nome.equals("")) {
             return false;
         }
         String sql;
         Connection con = new Conexao().getConnection();
         try (Statement stm = con.createStatement()) {
             if (cod != 0) {
-                sql = "delete from gerencia where gerenciacodigo = " + cod + "";
+                sql = "delete from funcionario where funcionariocodigo = " + cod + "";
                 stm.executeUpdate(sql);
                 return true;
             }
         } catch (SQLException ex) {
             System.out.println("Erro.");
             return false;
-        }*/
+        }
         return false;
     }
     

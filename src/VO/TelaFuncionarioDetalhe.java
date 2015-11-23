@@ -367,7 +367,18 @@ public class TelaFuncionarioDetalhe extends javax.swing.JFrame {
     }//GEN-LAST:event_btSalvarEditarActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        FuncionarioVO funcionarioVO = new FuncionarioVO();
+        funcionarioVO.setCod(Integer.parseInt(txtCodigo.getText()));
+        funcionarioVO.setNome(txtNome.getText());
+        FuncionarioRN funcionarioRN = new FuncionarioRN(funcionarioVO);
+        FuncionarioPERS funcionarioPERS = new FuncionarioPERS(funcionarioRN);
 
+        if (funcionarioPERS.excluir()) {
+            JOptionPane.showMessageDialog(this, "Excluído com sucesso!");
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao excluir!");
+        }
     }//GEN-LAST:event_btExcluirActionPerformed
 
     /**
