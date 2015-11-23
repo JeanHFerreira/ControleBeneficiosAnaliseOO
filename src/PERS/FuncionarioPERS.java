@@ -27,6 +27,8 @@ public class FuncionarioPERS {
         int cod = this.getFuncionarioRN().getFuncionarioVO().getCod();
         String nome = this.getFuncionarioRN().getFuncionarioVO().getNome();
         String cpf = this.getFuncionarioRN().getFuncionarioVO().getCpf();
+        System.out.println(""+this.getFuncionarioRN().getFuncionarioVO().getCargoVO().getCod());
+        System.out.println(""+this.getFuncionarioRN().getFuncionarioVO().getGerenciaVO().getCod());
         int cargoCodigo = this.getFuncionarioRN().getFuncionarioVO().getCargoVO().getCod();
         int gerenciaCodigo = this.getFuncionarioRN().getFuncionarioVO().getGerenciaVO().getCod();
         String sexo = this.getFuncionarioRN().getFuncionarioVO().getSexo();
