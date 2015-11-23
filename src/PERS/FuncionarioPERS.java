@@ -92,7 +92,7 @@ public class FuncionarioPERS {
                         + "funcionarioendereco"+ endereço +","
                         + "cargocodigo"+ cargoCodigo +","
                         + "gerenciacodigo"+ gerenciaCodigo
-                        + " where gerenciacodigo = " + cod + "";
+                        + " where funcionariocodigo = " + cod + "";
                 System.out.println(sql);
                 stm.executeUpdate(sql);
             }
