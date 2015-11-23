@@ -30,7 +30,7 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         this.setSize(420, 550);
         this.setLocationRelativeTo(null); //carrega a janela no meio da tela.
         this.btDependente.setEnabled(true);
-        this.txtCodigo.setText(""+funcionarioVO.getCod());
+        this.txtCodigo.setText("" + funcionarioVO.getCod());
         this.txtCpf.setText(funcionarioVO.getCpf());
         this.txtDataNasc.setText(funcionarioVO.getDataNasc());
         this.txtLogin.setText(funcionarioVO.getLogin());
@@ -38,13 +38,13 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
         this.txtRG.setText(funcionarioVO.getRg());
         this.txtSenha.setText(funcionarioVO.getSenha());
         this.btSalvarEditar.setText("Salvar");
-        if(funcionarioVO.getSexo().equals("M")){
+        if (funcionarioVO.getSexo().equals("M")) {
             this.rbMasculino.setSelected(true);
-        }else{
+        } else {
             this.rbFeminino.setSelected(true);
         }
-        if(funcionarioVO.getNivel()!=0){
-            this.cbNivel.setSelectedIndex(funcionarioVO.getNivel()-1);
+        if (funcionarioVO.getNivel() != 0) {
+            this.cbNivel.setSelectedIndex(funcionarioVO.getNivel() - 1);
         }
 
     }
@@ -76,8 +76,8 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
     }
 
     public GerenciaVO pegarIdGerencia(String obj) {
-        for(int i = 0; i< listaGerencia.size(); i++){
-            if(listaGerencia.get(i).getNome().equals(obj)){
+        for (int i = 0; i < listaGerencia.size(); i++) {
+            if (listaGerencia.get(i).getNome().equals(obj)) {
                 return listaGerencia.get(i);
             }
         }
@@ -85,16 +85,16 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
     }
 
     public CargoVO pegarIdCargo(String obj) {
-        for(int i = 0; i< listaCargo.size(); i++){
-            if(listaCargo.get(i).getNome().equals(obj)){
+        for (int i = 0; i < listaCargo.size(); i++) {
+            if (listaCargo.get(i).getNome().equals(obj)) {
                 return listaCargo.get(i);
             }
         }
         return null;
     }
-    
+
     public String pegarSexo() {
-        return (this.rbMasculino.isSelected())?"M":"S";
+        return (this.rbMasculino.isSelected()) ? "M" : "S";
     }
 
     @SuppressWarnings("unchecked")
@@ -294,35 +294,6 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
             this.txtSalario.setEnabled(true);
             this.cbCargo.setEnabled(true);
             this.cbGerencia.setEnabled(true);
-            FuncionarioVO funcionarioVO = new FuncionarioVO();
-            int codigo;
-            if (lbCodigo.getText().equals("-")) {
-                codigo = 0;
-            } else {
-                codigo = Integer.parseInt(lbCodigo.getText());
-            }
-            funcionarioVO.setCod(codigo);
-            funcionarioVO.setNome(this.txtNome.getText());
-            funcionarioVO.setRg(this.txtRG.getText());
-            funcionarioVO.setCpf(this.txtCpf.getText());
-            funcionarioVO.setSexo(this.pegarSexo());
-            funcionarioVO.setDataNasc(this.txtDataNasc.getText());
-            funcionarioVO.setCargoVO(this.pegarIdCargo((String) this.cbGerencia.getSelectedItem()));
-            funcionarioVO.setGerenciaVO(this.pegarIdGerencia((String) this.cbGerencia.getSelectedItem()));
-            funcionarioVO.setLogin(this.txtLogin.getText());
-            funcionarioVO.setSenha(this.txtSenha.getText());
-            funcionarioVO.setNivel(this.cbNivel.getSelectedIndex()+1);
-            funcionarioVO.setEndereço(this.txtEndereco.getText());
-            
-            
-            FuncionarioRN funcionarioRN = new FuncionarioRN(funcionarioVO);
-            FuncionarioPERS funcionarioPERS = new FuncionarioPERS(funcionarioRN);
-            if (funcionarioPERS.salvar()) {
-                this.lbCodigo.setText("" + funcionarioVO.getCod());
-                this.btDependente.setEnabled(true);
-            } else {
-                JOptionPane.showMessageDialog(this, null, "Erro ao salvar", JOptionPane.ERROR_MESSAGE);
-            }
         } else {
             if (btSalvarEditar.getText().equals("Salvar")) {
                 this.txtCodigo.setEnabled(false);
@@ -331,6 +302,33 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
                 this.txtSalario.setEnabled(false);
                 this.cbCargo.setEnabled(false);
                 this.cbGerencia.setEnabled(false);
+                FuncionarioVO funcionarioVO = new FuncionarioVO();
+                int codigo;
+                if (lbCodigo.getText().equals("-")) {
+                    codigo = 0;
+                } else {
+                    codigo = Integer.parseInt(lbCodigo.getText());
+                }
+                funcionarioVO.setCod(codigo);
+                funcionarioVO.setNome(this.txtNome.getText());
+                funcionarioVO.setRg(this.txtRG.getText());
+                funcionarioVO.setCpf(this.txtCpf.getText());
+                funcionarioVO.setSexo(this.pegarSexo());
+                funcionarioVO.setDataNasc(this.txtDataNasc.getText());
+                funcionarioVO.setCargoVO(this.pegarIdCargo((String) this.cbGerencia.getSelectedItem()));
+                funcionarioVO.setGerenciaVO(this.pegarIdGerencia((String) this.cbGerencia.getSelectedItem()));
+                funcionarioVO.setLogin(this.txtLogin.getText());
+                funcionarioVO.setSenha(this.txtSenha.getText());
+                funcionarioVO.setNivel(this.cbNivel.getSelectedIndex() + 1);
+                funcionarioVO.setEndereço(this.txtEndereco.getText());
+                FuncionarioRN funcionarioRN = new FuncionarioRN(funcionarioVO);
+                FuncionarioPERS funcionarioPERS = new FuncionarioPERS(funcionarioRN);
+                if (funcionarioPERS.salvar()) {
+                    this.lbCodigo.setText("" + funcionarioVO.getCod());
+                    this.btDependente.setEnabled(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, null, "Erro ao salvar", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
     }//GEN-LAST:event_btSalvarEditarActionPerformed
