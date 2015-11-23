@@ -305,10 +305,10 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
                 this.cbGerencia.setEnabled(false);
                 FuncionarioVO funcionarioVO = new FuncionarioVO();
                 int codigo;
-                if (lbCodigo.getText().equals("-")) {
+                if (txtCodigo.getText().equals("-")) {
                     codigo = 0;
                 } else {
-                    codigo = Integer.parseInt(lbCodigo.getText());
+                    codigo = Integer.parseInt(txtCodigo.getText());
                 }
                 funcionarioVO.setCod(codigo);
                 funcionarioVO.setNome(this.txtNome.getText());
