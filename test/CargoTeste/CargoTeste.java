@@ -9,9 +9,13 @@ import junit.framework.*;
  * @author Ericson
  * @author Andressa
  */
-public class CargoTeste extends TestCase{
-
-    @Test
+public class CargoTeste extends TestCase {
+    
+    public CargoTeste(String testName) {
+        super(testName);
+    
+    }
+    //@Test
     public void cargoTeste1() {
         CargoVO cargoVO = new CargoVO();
         CargoRN cargoRN = new CargoRN(cargoVO);
@@ -21,7 +25,7 @@ public class CargoTeste extends TestCase{
         assertFalse(cargoPERS.excluir());
     }
     
-    @Test
+    //@Test
     public void cargoTeste2() {
         CargoVO cargoVO = new CargoVO();
         CargoRN cargoRN = new CargoRN(cargoVO);
@@ -33,7 +37,7 @@ public class CargoTeste extends TestCase{
         assertFalse(cargoPERS.excluir());
     }
     
-    @Test
+    //@Test
     public void cargoTeste3() {
         CargoVO cargoVO = new CargoVO();
         CargoRN cargoRN = new CargoRN(cargoVO);
@@ -45,7 +49,7 @@ public class CargoTeste extends TestCase{
         assertFalse(cargoPERS.excluir());
     }
     
-    @Test
+    //@Test
     public void cargoTeste4() {
         CargoVO cargoVO = new CargoVO();
         CargoRN cargoRN = new CargoRN(cargoVO);
@@ -57,7 +61,7 @@ public class CargoTeste extends TestCase{
         assertFalse(cargoPERS.excluir());
     }
     
-    @Test
+    //@Test
     public void cargoTeste5() {
         CargoVO cargoVO = new CargoVO();
         CargoRN cargoRN = new CargoRN(cargoVO);
@@ -69,7 +73,7 @@ public class CargoTeste extends TestCase{
         assertFalse(cargoPERS.excluir());
     }
     
-    @Test
+    //@Test
     public void cargoTeste6() {
         CargoVO cargoVO = new CargoVO();
         CargoRN cargoRN = new CargoRN(cargoVO);
@@ -81,7 +85,7 @@ public class CargoTeste extends TestCase{
         assertFalse(cargoPERS.excluir());
     }
     
-    @Test
+    //@Test
     public void cargoTeste7() {
         CargoVO cargoVO = new CargoVO();
         CargoRN cargoRN = new CargoRN(cargoVO);
