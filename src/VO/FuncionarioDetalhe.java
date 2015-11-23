@@ -74,10 +74,20 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
     }
 
     public GerenciaVO pegarIdGerencia(String obj) {
+        for(int i = 0; i< listaGerencia.size(); i++){
+            if(listaGerencia.get(i).getNome().equals(obj)){
+                return listaGerencia.get(i);
+            }
+        }
         return null;
     }
 
     public CargoVO pegarIdCargo(String obj) {
+        for(int i = 0; i< listaCargo.size(); i++){
+            if(listaCargo.get(i).getNome().equals(obj)){
+                return listaCargo.get(i);
+            }
+        }
         return null;
     }
     
