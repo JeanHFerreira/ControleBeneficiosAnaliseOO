@@ -290,17 +290,19 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
                 codigo = Integer.parseInt(lbCodigo.getText());
             }
             funcionarioVO.setCod(codigo);
+            funcionarioVO.setNome(this.txtNome.getText());
+            funcionarioVO.setRg(this.txtRG.getText());
             funcionarioVO.setCpf(this.txtCpf.getText());
+            funcionarioVO.setSexo(this.pegarSexo());
+            funcionarioVO.setDataNasc(this.txtDataNasc.getText());
             funcionarioVO.setCargoVO(this.pegarIdCargo((String) this.cbGerencia.getSelectedItem()));
             funcionarioVO.setGerenciaVO(this.pegarIdGerencia((String) this.cbGerencia.getSelectedItem()));
-            funcionarioVO.setNome(this.txtNome.getText());
-            funcionarioVO.setDataNasc(this.txtDataNasc.getText());
             funcionarioVO.setLogin(this.txtLogin.getText());
-            funcionarioVO.setSexo(this.pegarSexo());
-            funcionarioVO.setEndereço(this.txtEndereco.getText());
             funcionarioVO.setSenha(this.txtSenha.getText());
             funcionarioVO.setNivel(this.cbNivel.getSelectedIndex()+1);
-            funcionarioVO.setRg(this.txtRG.getText());
+            funcionarioVO.setEndereço(this.txtEndereco.getText());
+            
+            
             FuncionarioRN funcionarioRN = new FuncionarioRN(funcionarioVO);
             FuncionarioPERS funcionarioPERS = new FuncionarioPERS(funcionarioRN);
             if (funcionarioPERS.salvar()) {
