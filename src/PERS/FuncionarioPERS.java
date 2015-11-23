@@ -81,17 +81,17 @@ public class FuncionarioPERS {
                 this.getFuncionarioRN().getFuncionarioVO().setCod(resultado);
             } else {
                 sql = "update funcionario "
-                        + "set funcionarionome = "+ nome +","
-                        + "funcionariosexo"+ sexo +","
-                        + "funcionariorg"+ rg +","
-                        + "funcionariocpf"+ cpf +","
-                        + "funcionariodatanascimento"+dataNasc +","
-                        + "funcionarionivel"+ nivel +","
-                        + "funcionariologin"+ login +","
-                        + "funcionariosenha"+ senha +","
-                        + "funcionarioendereco"+ endereço +","
-                        + "cargocodigo"+ cargoCodigo +","
-                        + "gerenciacodigo"+ gerenciaCodigo
+                        + "set funcionarionome = '"+ nome +"',"
+                        + "funcionariosexo = '"+ sexo +"',"
+                        + "funcionariorg = '"+ rg +"',"
+                        + "funcionariocpf = '"+ cpf +"',"
+                        + "funcionariodatanascimento = '"+dataNasc +"',"
+                        + "funcionarionivel = "+ nivel +","
+                        + "funcionariologin = '"+ login +"',"
+                        + "funcionariosenha = '"+ senha +"',"
+                        + "funcionarioendereco = '"+ endereço +"',"
+                        + "cargocodigo = "+ cargoCodigo +","
+                        + "gerenciacodigo = "+ gerenciaCodigo
                         + " where funcionariocodigo = " + cod + "";
                 System.out.println(sql);
                 stm.executeUpdate(sql);
