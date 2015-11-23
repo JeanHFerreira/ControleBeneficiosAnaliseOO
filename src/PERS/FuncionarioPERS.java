@@ -117,7 +117,7 @@ public class FuncionarioPERS {
                 + " from funcionario"
                 + " inner join cargo on funcionario.cargocodigo = cargo.cargocodigo"
                 + " inner join gerencia on funcionario.gerenciacodigo = gerencia.gerenciacodigo"
-                + " where funcionarionome LIKE '%'+'" + nome + "'+'%'";
+                + " where funcionarionome LIKE '%" + nome + "%'";
         System.out.println(sql);
         Connection con = new Conexao().getConnection();
         Statement stm = null;
