@@ -35,7 +35,7 @@ public class CargoVOTest extends TestCase {
     public void testGetCod() {
         System.out.println("getCod");
         CargoVO instance = new CargoVO();
-        int expResult = 0;
+        int expResult = -1;
         int result = instance.getCod();
         assertEquals(expResult, result);
     }
