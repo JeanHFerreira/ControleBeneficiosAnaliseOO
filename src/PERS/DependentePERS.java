@@ -76,7 +76,6 @@ public class DependentePERS {
                 this.getDependenteRN().getDependenteVO().setCod(resultado);
             } else {
                 sql = "update dependente set dependenteNome  = '" + nome + "', dependenteSexo = '" + sexo + "', dependenteCPF  = '" + cpf + "' where dependenteCodigo = " + cod + "";
-                JOptionPane.showMessageDialog(null, nome + "  SEXo:" + sexo + "  CPF:" + cpf + "  Código:" + cod);
                 stm.executeUpdate(sql);
 
             }
