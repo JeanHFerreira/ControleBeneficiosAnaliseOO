@@ -3,13 +3,14 @@ package GerenciaTeste;
 import PERS.GerenciaPERS;
 import RN.GerenciaRN;
 import VO.GerenciaVO;
+import junit.framework.*;
 
 /**
  * @author Eric
  * @authorAndressa
  * @author Jean_Henrique
  */
-public class GerenciaTeste {
+public class GerenciaTeste extends TestCase{
     
     @Test
     public void gerenciaTeste() {
@@ -21,7 +22,7 @@ public class GerenciaTeste {
         assertFalse(gerenciaPERS.excluir());
     }
     
-    @Test
+    //@Test
     public void gerenciaTeste1() {
         GerenciaVO gerenciaVO = new GerenciaVO();
         GerenciaRN gerenciaRN = new GerenciaRN(gerenciaVO);

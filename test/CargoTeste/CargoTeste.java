@@ -9,7 +9,7 @@ import VO.CargoVO;
  * @author Ericson
  * @author Andressa
  */
-public class CargoTeste {
+public class CargoTeste extends TestCase{
 
     @Test
     public cargoTeste1() {

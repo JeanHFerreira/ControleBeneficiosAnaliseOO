@@ -9,7 +9,7 @@ import VO.FuncionarioVO;
  * @author Andressa
  * @author Jean_Henrique
  */
-public class FuncionarioTeste {
+public class FuncionarioTeste extends TestCase{
     
     /*
     private int cod;

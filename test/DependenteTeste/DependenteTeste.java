@@ -10,7 +10,7 @@ import VO.FuncionarioVO;
  * @author Andressa
  * @author Jean_Henrique
  */
-public class DependenteTeste {
+public class DependenteTeste extends TestCase{
 
     @Test
     public dependenteTeste1() {
