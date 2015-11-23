@@ -329,6 +329,12 @@ public class FuncionarioDetalhe extends javax.swing.JFrame {
                     this.btDependente.setEnabled(true);
                     this.btSalvarEditar.setText("Editar");
                 } else {
+                    this.txtCodigo.setEnabled(true);
+                    this.txtCpf.setEnabled(true);
+                    this.txtNome.setEnabled(true);
+                    this.txtSalario.setEnabled(true);
+                    this.cbCargo.setEnabled(true);
+                    this.cbGerencia.setEnabled(true);
                     JOptionPane.showMessageDialog(this, null, "Erro ao salvar", JOptionPane.ERROR_MESSAGE);
                 }
             }
