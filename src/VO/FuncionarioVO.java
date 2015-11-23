@@ -21,15 +21,15 @@ public class FuncionarioVO {
     private String login;
     private String senha;
     private String endereço;
-    private int nivel ;
-    
+    private int nivel;
+
     public FuncionarioVO(int cod, String nome, String cpf) {
         this.cod = cod;
         this.nome = nome;
         this.cpf = cpf;
     }
 
-    public FuncionarioVO(int cod, String nome, String cpf,CargoVO cargoVO, GerenciaVO gerenciaVO) {
+    public FuncionarioVO(int cod, String nome, String cpf, CargoVO cargoVO, GerenciaVO gerenciaVO) {
         this.cod = cod;
         this.nome = nome;
         this.cpf = cpf;
@@ -41,6 +41,15 @@ public class FuncionarioVO {
         this.cod = -1;
         this.nome = null;
         this.cpf = null;
+        this.cargoVO = null;
+        this.gerenciaVO = null;
+        this.rg = null;
+        this.dataNasc = null;
+        this.sexo = null;
+        this.login = null;
+        this.senha = null;
+        this.endereço = null;
+        this.nivel = 0;
     }
 
     public int getCod() {
