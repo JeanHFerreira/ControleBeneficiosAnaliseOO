@@ -72,6 +72,8 @@ public class FuncionarioPERS {
                 cargoCodigo+","+
                 gerenciaCodigo+","+
                  ") RETURNING funcionariocodigo";
+               
+                System.out.println(sql);
                 ResultSet rs = stm.executeQuery(sql);
                 rs.next();
                 int resultado = rs.getInt(1);
@@ -95,7 +97,7 @@ public class FuncionarioPERS {
     public ArrayList<FuncionarioVO> carregarTabela(String nome) {
         ArrayList<FuncionarioVO> lista = new ArrayList<>();
 
-        Connection con = new Conexao().getConnection();
+        
         String sql = "select funcionario.funcionariocodigo,"
                 + "funcionario.funcionarionome, "
                 + "funcionario.funcionariosexo, "
@@ -112,10 +114,12 @@ public class FuncionarioPERS {
                 + "gerencia.gerenciacodigo,"
                 + "gerencia.gerencianome,"
                 + "gerencia.gerenciaadicionalsalario"
-                + "from funcionario"
-                + "inner join cargo on funcionario.cargocodigo = cargo.cargocodigo"
-                + "inner join gerencia on funcionario.gerenciacodigo = gerencia.gerenciacodigo"
-                + "where funcionarionome LIKE '%'+'" + nome + "'+'%'";
+                + " from funcionario"
+                + " inner join cargo on funcionario.cargocodigo = cargo.cargocodigo"
+                + " inner join gerencia on funcionario.gerenciacodigo = gerencia.gerenciacodigo"
+                + " where funcionarionome LIKE '%'+'" + nome + "'+'%'";
+        System.out.println(sql);
+        Connection con = new Conexao().getConnection();
         Statement stm = null;
         ResultSet rs = null;
         try {

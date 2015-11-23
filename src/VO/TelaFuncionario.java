@@ -134,6 +134,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btDetalheActionPerformed
 
+
     private void btIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIncluirActionPerformed
         FuncionarioDetalhe telaFuncDetalhe = new FuncionarioDetalhe();
         telaFuncDetalhe.setarCombo(null);
